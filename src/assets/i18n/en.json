@@ -1,0 +1,62 @@
+{
+  "ORDER": {
+    "PENDING_ORDERS": "Pending orders: {{ quantity }}",
+    "SINGULAR": "Order",
+    "PLURAL": "Orders",
+    "DESCRIPTION": "Your customers orders",
+    "ADD": "Add order"
+  },
+  "PRODUCT": {
+    "SINGULAR": "Product",
+    "PLURAL": "Products",
+    "DESCRIPTION": "Store products/services/items",
+    "ADD": "Add product",
+    "AVAILABLE": "Available"
+  },
+  "SECTION": {
+    "SINGULAR": "Section",
+    "PLURAL": "Sections",
+    "DESCRIPTION": "Additional content like blog entries/information/etc",
+    "ADD": "Add section"
+  },
+  "STORE": {
+    "SINGULAR": "Store",
+    "PLURAL": "Stores",
+    "DESCRIPTION": "Store data like description, currency, contact information, social media"
+  },
+  "AUTH": {
+    "SIGN_OUT": "Sign out",
+    "SIGN_IN": "Sign in"
+  },
+  "FORM": {
+    "NAME": "Name",
+    "ADDRESS": "Address",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CURRENCY_SYMBOL": "Currency symbol",
+    "WEBSITE": "Website",
+    "CATEGORY": "Category",
+    "PHONE": "Phone",
+    "DESCRIPTION": "Description",
+    "IMAGE": "Image",
+    "IMAGE_PLACEHOLDER": "Click here to select an image",
+    "PRICE": "Price",
+    "QUANTITY": "Quantity",
+    "TITLE": "Title"
+  },
+  "PAGINATOR": {
+    "PAGE_OF": "Page {{ currentPage }} of {{ totalOfPages }}"
+  },
+  "GENERAL": {
+    "CANCEL": "Cancel",
+    "CONFIRM": "Confirm",
+    "SAVE": "Save",
+    "EDIT": "Edit",
+    "DELETE": "Delete"
+  },
+  "STATUS": {
+    "PENDING": "Pending",
+    "DELIVERED": "Delivered",
+    "CANCELED": "Canceled"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ORDER": {
+    "PENDING_ORDERS": "Ordenes pendientes: {{ quantity }}",
+    "SINGULAR": "Orden",
+    "PLURAL": "Ordenes",
+    "DESCRIPTION": "Las ordenes de tus clientes",
+    "ADD": "Agregar orden"
+  },
+  "PRODUCT": {
+    "SINGULAR": "Producto",
+    "PLURAL": "Productos",
+    "DESCRIPTION": "Productos/servicios/articulos de la tienda",
+    "ADD": "Agregar producto",
+    "AVAILABLE": "Disponible"
+  },
+  "SECTION": {
+    "SINGULAR": "Sección",
+    "PLURAL": "Secciones",
+    "DESCRIPTION": "Información adicional como entradas de blog/información/etc",
+    "ADD": "Agregar sección"
+  },
+  "STORE": {
+    "SINGULAR": "Tienda",
+    "PLURAL": "Tiendas",
+    "DESCRIPTION": "Información sobre la tienda, moneda, información de contacto, redes sociales"
+  },
+  "AUTH": {
+    "SIGN_OUT": "Cerrar sesión",
+    "SIGN_IN": "Iniciar sesión"
+  },
+  "FORM": {
+    "NAME": "Nombre",
+    "ADDRESS": "Dirección",
+    "EMAIL": "Correo",
+    "PASSWORD": "Contraseña",
+    "CURRENCY_SYMBOL": "Símbolo de la moneda",
+    "WEBSITE": "Página web",
+    "CATEGORY": "Categoría",
+    "PHONE": "Teléfono",
+    "DESCRIPTION": "Descripción",
+    "IMAGE": "Imagen",
+    "IMAGE_PLACEHOLDER": "Haz clic aquí para seleccionar una imagen",
+    "PRICE": "Precio",
+    "QUANTITY": "Cantidad",
+    "TITLE": "Título"
+  },
+  "PAGINATOR": {
+    "PAGE_OF": "Página {{ currentPage }} de {{ totalOfPages }}"
+  },
+  "GENERAL": {
+    "CANCEL": "Cancelar",
+    "CONFIRM": "Confirmar",
+    "SAVE": "Guardar",
+    "EDIT": "Editar",
+    "DELETE": "Eliminar"
+  },
+  "STATUS": {
+    "PENDING": "Pendiente",
+    "DELIVERED": "Entregado",
+    "CANCELED": "Cancelado"
+  }
+}

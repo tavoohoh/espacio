@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "espacio-admin-dev": {
+      "hosting": {
+        "espacio": [
+          "espacio-admin-dev"
+        ]
+      }
+    }
+  }
+}
