@@ -52,6 +52,11 @@
             "styles": [
               "src/styles.sass"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/sass"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -145,6 +150,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "espacio"
+    }
+  },
+  "defaultProject": "espacio",
+  "cli": {
+    "analytics": "1b7abc45-0cc2-4b9d-bfd7-47a17ab402cf"
+  }
 }
