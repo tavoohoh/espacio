@@ -22,13 +22,18 @@ import { TextareaFieldComponent } from './components/fields/textarea-field/texta
 import { ImageFieldComponent } from './components/fields/image-field/image-field.component';
 import { DropdownFieldComponent } from './components/fields/dropdown-field/dropdown-field.component';
 import { CategoryComponent } from './components/ui/category/category.component';
-import { ProductComponent } from './components/ui/product/product.component';
-import { SectionComponent } from './components/ui/section/section.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { SectionsComponent } from './pages/sections/sections.component';
 import { PaginatorComponent } from './components/ui/paginator/paginator.component';
 import { OrderComponent } from './components/ui/order/order.component';
 import { OrderDetailComponent } from './components/ui/order-detail/order-detail.component';
 import { ModalComponent } from './components/ui/modal/modal.component';
 import { LoaderComponent } from './components/ui/loader/loader.component';
+import { StoreComponent } from './pages/store/store.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { SectionAddComponent } from './pages/section-add/section-add.component';
+import {MainComponent} from './main.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,8 +46,8 @@ const COMPONENTS = [
 
 const UI_COMPONENTS = [
   CategoryComponent,
-  ProductComponent,
-  SectionComponent,
+  ProductsComponent,
+  SectionsComponent,
   PaginatorComponent,
   OrderComponent,
   OrderDetailComponent,
@@ -59,12 +64,23 @@ const FIELD_COMPONENTS = [
   DropdownFieldComponent
 ];
 
+const PAGES = [
+  StoreComponent,
+  ProductsComponent,
+  ProductAddComponent,
+  SectionsComponent,
+  SectionAddComponent,
+  OrdersComponent
+];
+
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
     ...COMPONENTS,
     ...UI_COMPONENTS,
-    ...FIELD_COMPONENTS
+    ...FIELD_COMPONENTS,
+    ...PAGES
   ],
   imports: [
     BrowserModule,
