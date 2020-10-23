@@ -1,1 +1,22 @@
-<p>sidebar works!</p>
+<div class="es-sidebar">
+  <!-- sidebar header: logo and app version -->
+  <div class="es-sidebar-header">
+    <a routerLink="/" class="es-sidebar-logo">
+      <img src="assets/logo.png">
+    </a>
+    <div class="es-version">V. {{ appVersion }}</div>
+  </div>
+
+  <!-- menu -->
+  <app-button></app-button>
+  <app-button></app-button>
+  <app-button></app-button>
+  <app-button></app-button>
+
+  <!-- sidebar footer: store logo and name, and sign out button -->
+  <div class="es-sidebar-footer">
+    <div class="es-sidebar-store-logo"></div>
+    <div class="es-sidebar-store-name"></div>
+    <div class="es-sidebar-sign-out"></div>
+  </div>
+</div>

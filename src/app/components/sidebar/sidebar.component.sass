@@ -1,0 +1,29 @@
+@import "variables"
+@import "mixins"
+
+.es-sidebar
+  @include mixin-shadow
+  background-color: $color-white
+  border-radius: $border-radius-md
+  height: $layout-sidebar-height
+  padding: $layout-padding-md $layout-padding-lg
+
+.es-sidebar-header
+  height: 100px
+
+  .es-version
+    color: $color-gray
+    font-size: $font-size-xs
+    font-weight: bold
+    text-align: center
+    text-transform: uppercase
+
+  .es-sidebar-logo
+    width: 100%
+    display: block
+    margin-bottom: $layout-padding-sm
+
+    img
+      display: block
+      margin: auto
+      width: 140px
