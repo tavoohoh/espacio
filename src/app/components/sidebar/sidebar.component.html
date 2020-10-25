@@ -8,22 +8,32 @@
   </div>
 
   <!-- menu -->
-  <app-button
-    *ngFor="let item of menu"
-    [text]="item.text"
-    [textArgs]="item.icon === 'Order' ? { quantity: '14' } : null"
-    [route]="item.route"
-    [type]="item.type"
-    [iconName]="item.icon">
-  </app-button>
-<!--  <app-button></app-button>-->
-<!--  <app-button></app-button>-->
-<!--  <app-button></app-button>-->
+  <div class="es-sidebar-menu">
+    <app-button
+      *ngFor="let item of menu"
+      [text]="item.text"
+      [textArgs]="item.icon === 'Order' ? { quantity: '14' } : null"
+      [route]="item.route"
+      [type]="item.type"
+      [iconName]="item.icon">
+    </app-button>
+  </div>
 
   <!-- sidebar footer: store logo and name, and sign out button -->
   <div class="es-sidebar-footer">
-    <div class="es-sidebar-store-logo"></div>
-    <div class="es-sidebar-store-name"></div>
-    <div class="es-sidebar-sign-out"></div>
+    <div class="es-sidebar-store-logo">
+      <span>
+      {{ store.abbreviation }}
+      </span>
+    </div>
+    <div class="es-sidebar-store-name">
+      {{ store.name }}
+    </div>
+    <div class="es-sidebar-sign-out">
+      <app-button
+        [text]="'AUTH.SIGN_OUT'"
+        [type]="buttonType.Link">
+      </app-button>
+    </div>
   </div>
 </div>

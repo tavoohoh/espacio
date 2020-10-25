@@ -1,6 +1,6 @@
 {
   "ORDER": {
-    "PENDING_ORDERS": "Ordenes pendientes: {{ quantity }}",
+    "PENDING_ORDERS": "Ordenes: {{ quantity }}",
     "SINGULAR": "Orden",
     "PLURAL": "Ordenes",
     "DESCRIPTION": "Las ordenes de tus clientes",

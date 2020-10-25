@@ -19,4 +19,11 @@
       {{ text | translate:textArgs }}
     </span>
   </a>
+
+  <!-- Menu button -->
+  <a *ngSwitchCase="props.type.Link"
+     class="es-button-link"
+     [routerLink]="route">
+      {{ text | translate:textArgs }}
+  </a>
 </ng-container>

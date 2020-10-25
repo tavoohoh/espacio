@@ -21,10 +21,12 @@
     height: 22px
 
   span
-    font-weight: bold
     font-size: $font-size-sm
     letter-spacing: 0.02em
 
+/*******************************
+ * Highlighted button
+ ******************************/
 .es-button-highlighted
   gap: $layout-padding-sm
   background-color: $color-purple
@@ -38,6 +40,9 @@
   &:hover
     opacity: .9
 
+/*******************************
+ * Menu button
+ ******************************/
 .es-button-menu
   gap: $layout-padding-md
   margin-bottom: $layout-padding-md
@@ -61,3 +66,11 @@
 
     ::ng-deep app-icon svg
       fill: $color-purple
+
+/*******************************
+ * Link button
+ ******************************/
+.es-button-link
+  color: $color-gray
+  text-transform: uppercase
+  font-size: $font-size-xs
