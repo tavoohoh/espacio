@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
   template: `
     <div class="es-main">
       <app-sidebar></app-sidebar>
@@ -11,6 +10,7 @@ import { Component } from '@angular/core';
       </div>
     </div>
   `,
+  styleUrls: ['./main.component.sass']
 })
 export class MainComponent {
 }
