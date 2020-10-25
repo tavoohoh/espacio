@@ -1,1 +1,22 @@
-<p>button works!</p>
+<ng-container [ngSwitch]="type">
+  <!-- Highlighted button -->
+  <a *ngSwitchCase="props.type.Highlighted"
+     class="es-button-highlighted"
+     [routerLink]="route">
+    <app-icon [iconName]="iconName" [color]="'#ffffff'"></app-icon>
+    <span>
+      {{ text | translate:textArgs }}
+    </span>
+  </a>
+
+  <!-- Menu button -->
+  <a *ngSwitchCase="props.type.Menu"
+     class="es-button-menu"
+     routerLinkActive="es-button-active"
+     [routerLink]="route">
+    <app-icon [iconName]="iconName" [size]="22"></app-icon>
+    <span>
+      {{ text | translate:textArgs }}
+    </span>
+  </a>
+</ng-container>

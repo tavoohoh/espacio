@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import {SidebarMenuConstant} from '../../_constants/sidebar-menu.constant';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class SidebarComponent implements OnInit {
   public readonly appVersion = environment.version;
+  public readonly menu = SidebarMenuConstant;
 
   constructor() { }
 

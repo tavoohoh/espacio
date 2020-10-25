@@ -1,0 +1,63 @@
+@import "variables"
+
+.es-button-highlighted,
+.es-button-menu,
+.es-button-simple,
+.es-button-add,
+.es-button-action
+  transition: $effect-transition
+  text-decoration: none!important
+
+.es-button-highlighted,
+.es-button-menu
+  display: grid
+  grid-template-columns: 22px auto
+
+  app-icon,
+  span
+    align-self: center
+
+  app-icon
+    height: 22px
+
+  span
+    font-weight: bold
+    font-size: $font-size-sm
+    letter-spacing: 0.02em
+
+.es-button-highlighted
+  gap: $layout-padding-sm
+  background-color: $color-purple
+  padding: $layout-padding-sm
+  border-radius: $border-radius-sm
+  margin-bottom: $layout-padding-lg
+
+  span
+    color: $color-white
+
+  &:hover
+    opacity: .9
+
+.es-button-menu
+  gap: $layout-padding-md
+  margin-bottom: $layout-padding-md
+
+  span
+    color: $color-gray
+
+  ::ng-deep app-icon svg
+    fill: $color-gray
+
+  &:hover:not(.es-button-active)
+    span
+      color: darken($color-gray, 10)
+
+    ::ng-deep app-icon svg
+      fill: darken($color-gray, 10)
+
+  &.es-button-active
+    span
+      color: $color-black
+
+    ::ng-deep app-icon svg
+      fill: $color-purple

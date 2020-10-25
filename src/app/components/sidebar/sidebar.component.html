@@ -2,16 +2,23 @@
   <!-- sidebar header: logo and app version -->
   <div class="es-sidebar-header">
     <a routerLink="/" class="es-sidebar-logo">
-      <img src="assets/logo.png">
+      <img src="assets/logo.png" alt="Espacio">
     </a>
     <div class="es-version">V. {{ appVersion }}</div>
   </div>
 
   <!-- menu -->
-  <app-button></app-button>
-  <app-button></app-button>
-  <app-button></app-button>
-  <app-button></app-button>
+  <app-button
+    *ngFor="let item of menu"
+    [text]="item.text"
+    [textArgs]="item.icon === 'Order' ? { quantity: '14' } : null"
+    [route]="item.route"
+    [type]="item.type"
+    [iconName]="item.icon">
+  </app-button>
+<!--  <app-button></app-button>-->
+<!--  <app-button></app-button>-->
+<!--  <app-button></app-button>-->
 
   <!-- sidebar footer: store logo and name, and sign out button -->
   <div class="es-sidebar-footer">

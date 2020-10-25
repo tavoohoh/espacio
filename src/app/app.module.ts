@@ -33,7 +33,8 @@ import { StoreComponent } from './pages/store/store.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { SectionAddComponent } from './pages/section-add/section-add.component';
-import {MainComponent} from './main.component';
+import { MainComponent } from './main.component';
+import {IconComponent} from './components/ui/icon/icon.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,7 +54,8 @@ const UI_COMPONENTS = [
   OrderDetailComponent,
   ModalComponent,
   ButtonComponent,
-  LoaderComponent
+  LoaderComponent,
+  IconComponent
 ];
 
 const FIELD_COMPONENTS = [
