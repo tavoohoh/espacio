@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {GlobalsService} from './services/globals.service';
-import {BaseComponentModel} from './_models/base-component.model';
-import {NavigationEnd, Router} from '@angular/router';
-import {filter, takeUntil} from 'rxjs/operators';
-import {PageConstant} from './_constants/page.constant';
+import { GlobalsService } from './services/globals.service';
+import { BaseComponentModel } from './_models/base-component.model';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, takeUntil } from 'rxjs/operators';
+import { PageConstant } from './_constants/page.constant';
 
 @Component({
   template: `
@@ -15,14 +15,10 @@ import {PageConstant} from './_constants/page.constant';
       </div>
     </div>
   `,
-  styleUrls: ['./main.component.sass']
+  styleUrls: ['./main.component.sass'],
 })
 export class MainComponent extends BaseComponentModel implements OnInit {
-
-  constructor(
-    private globalsService: GlobalsService,
-    private router: Router
-  ) {
+  constructor(private globalsService: GlobalsService, private router: Router) {
     super();
   }
 
@@ -32,9 +28,12 @@ export class MainComponent extends BaseComponentModel implements OnInit {
     this.router.events
       .pipe(
         takeUntil(this.$destroyed),
-        filter(event => event instanceof NavigationEnd)
-      ).subscribe(
-        (event: NavigationEnd) => this.globalsService.currentPage.value = event && event.url ? PageConstant[event.url] : null
+        filter((event) => event instanceof NavigationEnd)
+      )
+      .subscribe(
+        (event: NavigationEnd) =>
+          (this.globalsService.currentPage.value =
+            event && event.url ? PageConstant[event.url] : null)
       );
   }
 }

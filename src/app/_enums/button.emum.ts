@@ -4,5 +4,5 @@ export enum ButtonEmum {
   Simple = 'Simple',
   Link = 'Link',
   Add = 'Add',
-  Action = 'Action'
+  Action = 'Action',
 }

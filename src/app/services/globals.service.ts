@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {PageStateModel} from '../_models/page.model';
+import { PageStateModel } from '../_models/page.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GlobalsService {
   public currentPage = new PageStateModel();

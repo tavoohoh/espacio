@@ -1,15 +1,15 @@
-import {PageModel} from '../_models';
+import { PageModel } from '../_models';
 
 export const PageConstant: { [key: string]: PageModel } = {
   '/orders': {
     title: 'ORDER.PLURAL',
     description: 'ORDER.DESCRIPTION',
-    action: null
+    action: null,
   },
   '/store': {
     title: 'ORDER.PLURAL',
     description: 'ORDER.DESCRIPTION',
-    action: null
+    action: null,
   },
   '/products': {
     title: 'PRODUCT.PLURAL',
@@ -17,13 +17,13 @@ export const PageConstant: { [key: string]: PageModel } = {
     action: {
       text: 'PRODUCT.ADD',
       id: 'product-add',
-      route: '/products/add'
-    }
+      route: '/products/add',
+    },
   },
   '/products/add': {
     title: 'PRODUCT.PLURAL',
     description: 'PRODUCT.ADD',
-    action: null
+    action: null,
   },
   '/sections': {
     title: 'SECTION.PLURAL',
@@ -31,12 +31,12 @@ export const PageConstant: { [key: string]: PageModel } = {
     action: {
       text: 'SECTION.ADD',
       id: 'section-add',
-      route: '/sections/add'
-    }
+      route: '/sections/add',
+    },
   },
   '/sections/add': {
     title: 'SECTION.PLURAL',
     description: 'SECTION.ADD',
-    action: null
-  }
+    action: null,
+  },
 };

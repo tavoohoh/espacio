@@ -4,5 +4,5 @@ export enum IconEnum {
   Section = 'Section',
   Store = 'Store',
   Edit = 'Edit',
-  Delete = 'Delete'
+  Delete = 'Delete',
 }

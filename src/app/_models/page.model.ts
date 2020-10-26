@@ -1,5 +1,5 @@
-import {StateElementModel} from './state.model';
-import {BehaviorSubject} from 'rxjs';
+import { StateElementModel } from './state.model';
+import { BehaviorSubject } from 'rxjs';
 
 export interface PageModel {
   title: string;

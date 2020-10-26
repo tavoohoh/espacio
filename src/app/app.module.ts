@@ -34,16 +34,13 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { SectionAddComponent } from './pages/section-add/section-add.component';
 import { MainComponent } from './main.component';
-import {IconComponent} from './components/ui/icon/icon.component';
+import { IconComponent } from './components/ui/icon/icon.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-const COMPONENTS = [
-  HeaderComponent,
-  SidebarComponent
-];
+const COMPONENTS = [HeaderComponent, SidebarComponent];
 
 const UI_COMPONENTS = [
   CategoryComponent,
@@ -55,7 +52,7 @@ const UI_COMPONENTS = [
   ModalComponent,
   ButtonComponent,
   LoaderComponent,
-  IconComponent
+  IconComponent,
 ];
 
 const FIELD_COMPONENTS = [
@@ -63,7 +60,7 @@ const FIELD_COMPONENTS = [
   NumericFieldComponent,
   TextareaFieldComponent,
   ImageFieldComponent,
-  DropdownFieldComponent
+  DropdownFieldComponent,
 ];
 
 const PAGES = [
@@ -72,7 +69,7 @@ const PAGES = [
   ProductAddComponent,
   SectionsComponent,
   SectionAddComponent,
-  OrdersComponent
+  OrdersComponent,
 ];
 
 @NgModule({
@@ -82,7 +79,7 @@ const PAGES = [
     ...COMPONENTS,
     ...UI_COMPONENTS,
     ...FIELD_COMPONENTS,
-    ...PAGES
+    ...PAGES,
   ],
   imports: [
     BrowserModule,
@@ -92,13 +89,13 @@ const PAGES = [
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireStorageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

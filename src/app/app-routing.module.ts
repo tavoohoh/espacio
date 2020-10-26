@@ -15,34 +15,34 @@ const routes: Routes = [
     children: [
       {
         path: 'store',
-        component: StoreComponent
+        component: StoreComponent,
       },
       {
         path: 'products',
-        component: ProductComponent
+        component: ProductComponent,
       },
       {
         path: 'products/add',
-        component: ProductAddComponent
+        component: ProductAddComponent,
       },
       {
         path: 'sections',
-        component: SectionsComponent
+        component: SectionsComponent,
       },
       {
         path: 'sections/add',
-        component: SectionAddComponent
+        component: SectionAddComponent,
       },
       {
         path: 'orders',
-        component: OrderComponent
-      }
-    ]
+        component: OrderComponent,
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

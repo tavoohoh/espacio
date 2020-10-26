@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ButtonEmum, IconEnum, StyleEnum} from '../../../_enums';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ButtonEmum, IconEnum, StyleEnum } from '../../../_enums';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.sass']
+  styleUrls: ['./button.component.sass'],
 })
 export class ButtonComponent {
   @Input() public type: ButtonEmum;
@@ -25,6 +25,6 @@ export class ButtonComponent {
   @Output() public clicked = new EventEmitter<void>();
 
   public props = {
-    type: ButtonEmum
+    type: ButtonEmum,
   };
 }
