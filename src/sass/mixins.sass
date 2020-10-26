@@ -9,7 +9,7 @@
   text-transform: uppercase
   transition: $effect-transition
 
-@mixin mixin-shadow($shadow: 0 8px 20px rgba(0, 0, 0, 0.1))
+@mixin mixin-shadow($shadow: 0 8px 20px rgba(0, 0, 0, 0.08))
   box-shadow: $shadow
 
 @mixin mixin-overflow-ellipsis()
@@ -17,7 +17,7 @@
   overflow: hidden
   text-overflow: ellipsis
 
-@mixin mixin-card($padding: $layout-padding-md $layout-padding-lg,$margin-left: 0)
+@mixin mixin-card($padding: $layout-padding-md $layout-padding-lg, $margin-left: 0)
   @include mixin-shadow
   background-color: $color-white
   border-radius: $border-radius-md
