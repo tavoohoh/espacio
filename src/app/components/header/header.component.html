@@ -1,1 +1,13 @@
-<p>header works!</p>
+<div class="es-header">
+  <div class="es-header-title">
+    {{ title | translate }}
+  </div>
+
+  <div class="es-header-description">
+    {{ description | translate }}
+  </div>
+
+  <div class="es-header-actions" *ngIf="action">
+    <app-button [text]="action.text" [type]="buttonType.Add" (clicked)="actionClicked.emit()"></app-button>
+  </div>
+</div>

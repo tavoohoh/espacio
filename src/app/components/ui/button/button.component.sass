@@ -1,4 +1,5 @@
 @import "variables"
+@import "mixins"
 
 .es-button-highlighted,
 .es-button-menu,
@@ -7,6 +8,9 @@
 .es-button-action
   transition: $effect-transition
   text-decoration: none!important
+  background: none
+  border: unset
+  line-height: 1
 
 .es-button-highlighted,
 .es-button-menu
@@ -74,3 +78,17 @@
   color: $color-gray
   text-transform: uppercase
   font-size: $font-size-xs
+
+/*******************************
+ * Add button
+ ******************************/
+.es-button-add
+  @include mixin-shadow($shadow: 0 4px 10px rgba(0, 0, 0, 0.05))
+  color: $color-black
+  font-size: $font-size-xs
+  border: 1px solid $color-gray-light
+  padding: $layout-padding-xs $layout-padding-sm
+  border-radius: $border-radius-md
+
+  &:hover
+    @include mixin-shadow($shadow: 0 4px 4px rgba(0, 0, 0, 0.08))

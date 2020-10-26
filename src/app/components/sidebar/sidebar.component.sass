@@ -2,13 +2,10 @@
 @import "mixins"
 
 .es-sidebar
-  @include mixin-shadow
+  @include mixin-card
   display: grid
   grid-template-rows: 100px auto min-content
-  background-color: $color-white
-  border-radius: $border-radius-md
   height: $layout-sidebar-height
-  padding: $layout-padding-md $layout-padding-lg
 
 .es-sidebar-header
   .es-version

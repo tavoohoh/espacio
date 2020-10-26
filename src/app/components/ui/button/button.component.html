@@ -1,4 +1,4 @@
-<ng-container [ngSwitch]="type">
+<ng-container [ngSwitch]="type" (click)="clicked.emit()">
   <!-- Highlighted button -->
   <a *ngSwitchCase="props.type.Highlighted"
      class="es-button-highlighted"
@@ -20,10 +20,17 @@
     </span>
   </a>
 
-  <!-- Menu button -->
+  <!-- Link button -->
   <a *ngSwitchCase="props.type.Link"
      class="es-button-link"
      [routerLink]="route">
       {{ text | translate:textArgs }}
+  </a>
+
+  <!-- Add button -->
+  <a *ngSwitchCase="props.type.Add"
+     class="es-button-add"
+     [routerLink]="route">
+    {{ text | translate }}
   </a>
 </ng-container>
