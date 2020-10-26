@@ -1,7 +1,11 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export class StateElementModel {
-  public element = new BehaviorSubject<any>(null);
+  private element: BehaviorSubject<any>;
+
+  constructor(private elementInitializer: BehaviorSubject<any>) {
+    this.element = elementInitializer;
+  }
 
   get value(): any {
     return this.element.value;

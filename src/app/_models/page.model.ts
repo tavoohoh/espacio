@@ -12,5 +12,7 @@ export interface PageModel {
 }
 
 export class PageStateModel extends StateElementModel {
-  public element = new BehaviorSubject<PageModel>(null);
+  constructor() {
+    super(new BehaviorSubject<PageModel>(null));
+  }
 }
