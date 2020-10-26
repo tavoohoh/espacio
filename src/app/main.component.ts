@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {GlobalsService} from './services/globals.service';
+import {BaseComponentModel} from './_models/base-component.model';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter, takeUntil} from 'rxjs/operators';
+import {PageConstant} from './_constants/page.constant';
 
 @Component({
   template: `
     <div class="es-main">
       <app-sidebar></app-sidebar>
-      <app-header
-        [title]="pageTitle"
-        [description]="pageDescription"
-        [action]="pageAction"
-      ></app-header>
+      <app-header></app-header>
       <div class="es-main-content">
         <router-outlet></router-outlet>
       </div>
@@ -16,21 +17,24 @@ import { Component, OnInit } from '@angular/core';
   `,
   styleUrls: ['./main.component.sass']
 })
-export class MainComponent implements OnInit {
-  public pageTitle: string;
-  public pageDescription: string;
-  public pageAction: {
-    text: string;
-    id: string;
-  };
+export class MainComponent extends BaseComponentModel implements OnInit {
+
+  constructor(
+    private globalsService: GlobalsService,
+    private router: Router
+  ) {
+    super();
+  }
 
   ngOnInit() {
-    // TODO: change this values base on the page
-    this.pageTitle = 'Products';
-    this.pageDescription = 'Products description. Products description. Products description.';
-    this.pageAction = {
-      text: 'Add product',
-      id: 'add-product'
-    };
+    this.globalsService.currentPage.value = PageConstant[this.router.url];
+
+    this.router.events
+      .pipe(
+        takeUntil(this.$destroyed),
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe(
+        (event: NavigationEnd) => this.globalsService.currentPage.value = event && event.url ? PageConstant[event.url] : null
+      );
   }
 }

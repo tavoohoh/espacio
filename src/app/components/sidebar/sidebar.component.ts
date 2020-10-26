@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import {SidebarMenuConstant} from '../../_constants/sidebar-menu.constant';
-import {StoreModel} from '../../_models/store.model';
+import {StoreModel} from '../../_models';
 import {ButtonEmum} from '../../_enums';
 
 @Component({

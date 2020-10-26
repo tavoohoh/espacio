@@ -1,34 +1,27 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ButtonEmum} from '../../_enums';
+import {GlobalsService} from '../../services/globals.service';
+import {PageModel} from '../../_models';
+import {BaseComponentModel} from '../../_models/base-component.model';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass']
 })
-export class HeaderComponent implements OnChanges {
-  @Input() public title: string;
-  @Input() public description: string;
-  @Input() public action: {
-    text: string;
-    id: string;
-  };
-
-  @Output() public actionClicked = new EventEmitter<void>();
-
+export class HeaderComponent extends BaseComponentModel implements OnInit {
+  public currentPage: PageModel;
   public buttonType = ButtonEmum;
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.title) {
-      this.title = changes.title.currentValue || '';
-    }
+  constructor(private globalsService: GlobalsService) {
+    super();
+  }
 
-    if (changes.description) {
-      this.description = changes.description.currentValue || '';
-    }
-
-    if (changes.action) {
-      this.action = changes.action.currentValue || '';
-    }
+  ngOnInit() {
+    this.globalsService.currentPage.observe()
+      .pipe(
+        takeUntil(this.$destroyed)
+      ).subscribe(currentPage => this.currentPage = currentPage);
   }
 }
