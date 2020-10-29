@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ButtonEmum } from '../../_enums';
 import { GlobalsService } from '../../services/globals.service';
 import { PageModel } from '../../_models';
 import { BaseComponentModel } from '../../_models/base-component.model';
@@ -12,7 +11,6 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class HeaderComponent extends BaseComponentModel implements OnInit {
   public currentPage: PageModel;
-  public buttonType = ButtonEmum;
 
   constructor(private globalsService: GlobalsService) {
     super();

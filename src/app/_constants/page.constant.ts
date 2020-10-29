@@ -7,8 +7,8 @@ export const PageConstant: { [key: string]: PageModel } = {
     action: null,
   },
   '/store': {
-    title: 'ORDER.PLURAL',
-    description: 'ORDER.DESCRIPTION',
+    title: 'STORE.SINGULAR',
+    description: 'STORE.DESCRIPTION',
     action: null,
   },
   '/products': {

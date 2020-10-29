@@ -1,4 +1,4 @@
 export { SvgIconModel } from './svg-icon.model';
 export { StateElementModel } from './state.model';
-export { PageModel } from './page.model';
-export { StoreModel } from './store.model';
+export { PageModel, PageStateModel } from './page.model';
+export { StoreModel, StoreStateModel } from './store.model';

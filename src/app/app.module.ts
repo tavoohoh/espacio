@@ -35,6 +35,7 @@ import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { SectionAddComponent } from './pages/section-add/section-add.component';
 import { MainComponent } from './main.component';
 import { IconComponent } from './components/ui/icon/icon.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -85,6 +86,7 @@ const PAGES = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

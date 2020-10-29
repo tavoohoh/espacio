@@ -1,3 +1,6 @@
+import { BehaviorSubject } from 'rxjs';
+import { StateElementModel } from './state.model';
+
 export class StoreModel {
   name: string;
   address: string;
@@ -5,32 +8,31 @@ export class StoreModel {
   currencySymbol: string;
   website: string;
   category: string;
+  phone: number;
+  whatsapp: number;
+  instagram: string;
+  facebook: string;
+  youtube: string;
+  twitter: string;
+  imageUrl: string;
+  description: string;
   abbreviation: string;
-  description?: string;
-  imageUrl?: string;
-  phone?: string;
-  whatsapp?: string;
-  instagram?: string;
-  facebook?: string;
-  youtube?: string;
-  twitter?: string;
 
   constructor(private props: any) {
-    this.name = props.name;
-    this.address = props.address;
-    this.email = props.email;
-    this.currencySymbol = props.currencySymbol;
-    this.website = props.website;
-    this.category = props.category;
-    this.abbreviation = props.abbreviation;
-    this.description = props.description;
-    this.imageUrl = props.imageUrl;
-    this.phone = props.phone;
-    this.whatsapp = props.whatsapp;
-    this.instagram = props.instagram;
-    this.facebook = props.facebook;
-    this.youtube = props.youtube;
-    this.twitter = props.twitter;
+    for (const prop in props) {
+      if (props.hasOwnProperty(prop)) {
+        this[prop] = props[prop];
+      }
+    }
+
     this.abbreviation = props.name.charAt(0);
+
+    delete this.props;
+  }
+}
+
+export class StoreStateModel extends StateElementModel {
+  constructor() {
+    super(new BehaviorSubject<StoreModel>(null));
   }
 }

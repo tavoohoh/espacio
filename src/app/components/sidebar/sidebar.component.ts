@@ -1,29 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { SidebarMenuConstant } from '../../_constants/sidebar-menu.constant';
 import { StoreModel } from '../../_models';
-import { ButtonEmum } from '../../_enums';
+import { takeUntil } from 'rxjs/operators';
+import { GlobalsService } from '../../services/globals.service';
+import { BaseComponentModel } from '../../_models/base-component.model';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.sass'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent extends BaseComponentModel {
   public readonly appVersion = environment.version;
   public readonly menu = SidebarMenuConstant;
-  public store = new StoreModel({
-    name: 'Sinpote',
-    address: 'Address 10-135',
-    email: 'hi@sinpote.com',
-    currencySymbol: '$',
-    website: 'www.sinpote.com',
-    category: 'Commerce',
-  });
+  public store: StoreModel;
+  public orderQuantity: { quantity: string } = { quantity: '0' };
 
-  public buttonType = ButtonEmum;
+  constructor(private globalsService: GlobalsService) {
+    super();
+  }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  init(): void {
+    this.globalsService.store
+      .observe()
+      .pipe(takeUntil(this.$destroyed))
+      .subscribe((store) => (this.store = store));
+  }
 }

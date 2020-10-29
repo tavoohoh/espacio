@@ -1,1 +1,21 @@
-<p>store works!</p>
+<div class="es-card" *ngIf="form && fieldsNames">
+  <form class="es-form" [formGroup]="form" (ngSubmit)="submit()">
+    <ng-container *ngFor="let field of fieldsNames">
+      <label class="es-form-field">
+        <span>{{ 'FORM.' + field.text | translate }}</span>
+        <input type="text" [formControlName]="field.model" />
+      </label>
+      <div
+        *ngIf="submitted && formControls[field.model].errors"
+        class="es-form-invalid"
+      >
+        <span *ngIf="formControls[field.model].errors.required">
+          Email is required
+        </span>
+        <span *ngIf="formControls[field.model].errors.email">
+          Email must be a valid email address
+        </span>
+      </div>
+    </ng-container>
+  </form>
+</div>
