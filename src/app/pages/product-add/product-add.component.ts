@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ComponentFormBaseClass } from '../../_classes';
+import { GlobalsService } from '../../services/globals.service';
+import { FormBuilder } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-product-add',
@@ -7,7 +10,11 @@ import { ComponentFormBaseClass } from '../../_classes';
   styleUrls: ['./product-add.component.sass'],
 })
 export class ProductAddComponent extends ComponentFormBaseClass {
-  constructor() {
-    super();
+  constructor(
+    private globalsService: GlobalsService,
+    public formBuilder: FormBuilder,
+    private afs: AngularFirestore
+  ) {
+    super(formBuilder);
   }
 }
