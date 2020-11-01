@@ -1,1 +1,22 @@
-<p>numeric-field works!</p>
+<div class="es-form-field" [formGroup]="formGroup">
+  <label class="es-form-box">
+    <span class="es-form-field-label">
+      {{ fieldLabel | translate }}
+    </span>
+    <input
+      (keypress)="numberOnly($event)"
+      class="es-form-field-input"
+      type="text"
+      [placeholder]="fieldPlaceholder | translate"
+      [formControlName]="fieldName"
+    />
+  </label>
+
+  <div *ngIf="submitted && controls[fieldName].errors" class="es-form-invalid">
+    <span *ngIf="controls[fieldName].errors.required">
+      {{
+        'FORM.ERRORS.REQUIRED' | translate: { field: fieldLabel | translate }
+      }}
+    </span>
+  </div>
+</div>

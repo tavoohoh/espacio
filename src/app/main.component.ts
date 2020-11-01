@@ -3,7 +3,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { GlobalsService } from './services/globals.service';
-import { NavigationEnd, Router } from '@angular/router';
+import {
+  Event,
+  NavigationEnd,
+  ResolveEnd,
+  Router,
+  RouterEvent,
+} from '@angular/router';
 import { StoreModel } from './_models';
 import { ComponentBaseClass } from './_classes';
 import { PageConstant } from './_constants/page.constant';
@@ -41,13 +47,14 @@ export class MainComponent extends ComponentBaseClass {
     this.router.events
       .pipe(
         takeUntil(this.$destroyed),
-        filter((event) => event instanceof NavigationEnd)
+        filter(
+          (event: Event): event is RouterEvent => event instanceof ResolveEnd
+        )
       )
-      .subscribe(
-        (event: NavigationEnd) =>
-          (this.globalsService.currentPage.value =
-            event && event.url ? PageConstant[event.url] : null)
-      );
+      .subscribe((event: ResolveEnd) => {
+        this.globalsService.currentPage.value =
+          event && event.url ? PageConstant[event.url] : null;
+      });
   }
 
   private setStore(): void {
