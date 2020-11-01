@@ -25,7 +25,7 @@ export class ComponentFormBaseClass implements OnDestroy, OnInit {
     this.destroy();
   }
 
-  public setFields(): { [key: string]: any } {
+  setFields(): { [key: string]: any } {
     return {};
   }
 
@@ -34,12 +34,12 @@ export class ComponentFormBaseClass implements OnDestroy, OnInit {
     this.fieldsValues = this.form.value;
   }
 
-  public resetForm(): void {
+  resetForm(): void {
     this.form.reset(this.fieldsValues);
     this.submitted = false;
   }
 
-  public submit(): void {
+  submit(): void {
     this.submitted = true;
 
     if (this.form.invalid) {
@@ -49,6 +49,6 @@ export class ComponentFormBaseClass implements OnDestroy, OnInit {
     this.fieldsValues = this.form.value;
   }
 
-  public init(): void {}
-  public destroy(): void {}
+  init(): void {}
+  destroy(): void {}
 }

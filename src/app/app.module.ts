@@ -31,8 +31,8 @@ import { ModalComponent } from './components/ui/modal/modal.component';
 import { LoaderComponent } from './components/ui/loader/loader.component';
 import { StoreComponent } from './pages/store/store.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { ProductAddComponent } from './pages/product-add/product-add.component';
-import { SectionAddComponent } from './pages/section-add/section-add.component';
+import { ProductFormComponent } from './pages/product-form/product-form.component';
+import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { MainComponent } from './main.component';
 import { IconComponent } from './components/ui/icon/icon.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -67,9 +67,9 @@ const FIELD_COMPONENTS = [
 const PAGES = [
   StoreComponent,
   ProductsComponent,
-  ProductAddComponent,
+  ProductFormComponent,
   SectionsComponent,
-  SectionAddComponent,
+  SectionFormComponent,
   OrdersComponent,
 ];
 

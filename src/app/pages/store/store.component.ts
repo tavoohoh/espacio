@@ -8,6 +8,8 @@ import { GlobalsService } from '../../services/globals.service';
 import { StoreModel } from '../../_models';
 import { environment } from '../../../environments/environment';
 
+// TODO: add description and image field
+
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -28,7 +30,7 @@ export class StoreComponent extends ComponentFormBaseClass {
     this.getStore();
   }
 
-  public setFields(): { [key: string]: any } {
+  setFields(): { [key: string]: any } {
     const fields = {};
 
     for (const prop in this.store) {

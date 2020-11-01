@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main.component';
 import { StoreComponent } from './pages/store/store.component';
 import { ProductComponent } from './components/ui/product/product.component';
-import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { SectionsComponent } from './pages/sections/sections.component';
-import { SectionAddComponent } from './pages/section-add/section-add.component';
+import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { OrderComponent } from './components/ui/order/order.component';
 
 const routes: Routes = [
@@ -23,7 +23,11 @@ const routes: Routes = [
       },
       {
         path: 'products/add',
-        component: ProductAddComponent,
+        component: ProductFormComponent,
+      },
+      {
+        path: 'products/edit/:productId',
+        component: ProductFormComponent,
       },
       {
         path: 'sections',
@@ -31,7 +35,7 @@ const routes: Routes = [
       },
       {
         path: 'sections/add',
-        component: SectionAddComponent,
+        component: SectionFormComponent,
       },
       {
         path: 'orders',
