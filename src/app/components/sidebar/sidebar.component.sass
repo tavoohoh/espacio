@@ -33,15 +33,23 @@
 
   .es-sidebar-store-logo
     display: grid
-    background-color: $color-gray
     grid-row: 1 / 3
     border-radius: 50%
 
-    span
+    img
+      display: grid
       text-align: center
       align-self: center
       font-size: 24px
       font-weight: bold
+      width: 50px
+      height: 50px
+      border-radius: 50%
+      background-color: $color-gray-light
+      color: $color-gray
+
+      &::before
+        align-self: center
 
   .es-sidebar-store-name
     @include mixin-overflow-ellipsis

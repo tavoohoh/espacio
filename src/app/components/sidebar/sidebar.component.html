@@ -23,9 +23,7 @@
   <!-- sidebar footer: store logo and name, and sign out button -->
   <div class="es-sidebar-footer" *ngIf="store">
     <div class="es-sidebar-store-logo">
-      <span>
-        {{ store.abbreviation }}
-      </span>
+      <img [src]="store.imageUrl" [alt]="store.abbreviation" />
     </div>
     <div class="es-sidebar-store-name">
       {{ store.name }}
