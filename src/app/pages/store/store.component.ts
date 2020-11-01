@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { takeUntil } from 'rxjs/operators';
 
-import { ComponentBaseClass } from '../../_classes';
+import { ComponentFormBaseClass } from '../../_classes';
 import { GlobalsService } from '../../services/globals.service';
 import { StoreModel } from '../../_models';
 import { environment } from '../../../environments/environment';
@@ -13,34 +13,22 @@ import { environment } from '../../../environments/environment';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.sass'],
 })
-export class StoreComponent extends ComponentBaseClass {
-  public form: FormGroup;
-  public submitted = false;
+export class StoreComponent extends ComponentFormBaseClass {
   private store: StoreModel;
-  private fieldsValues = {};
 
   constructor(
     private globalsService: GlobalsService,
-    private formBuilder: FormBuilder,
+    public formBuilder: FormBuilder,
     private afs: AngularFirestore
   ) {
-    super();
+    super(formBuilder);
   }
 
   init(): void {
     this.getStore();
   }
 
-  destroy() {
-    this.resetForm();
-  }
-
-  public resetForm(): void {
-    this.form.reset(this.fieldsValues);
-    this.submitted = false;
-  }
-
-  private setForm(): void {
+  public setFields(): { [key: string]: any } {
     const fields = {};
 
     for (const prop in this.store) {
@@ -72,8 +60,7 @@ export class StoreComponent extends ComponentBaseClass {
       }
     }
 
-    this.form = this.formBuilder.group(fields);
-    this.fieldsValues = this.form.value;
+    return fields;
   }
 
   private getStore(): void {
@@ -89,13 +76,7 @@ export class StoreComponent extends ComponentBaseClass {
   }
 
   public async submit(): Promise<void> {
-    this.submitted = true;
-
-    if (this.form.invalid) {
-      return;
-    }
-
-    this.fieldsValues = this.form.value;
+    super.submit();
 
     const store = this.afs.doc<StoreModel>(
       `store/${environment.appConfig.storeApiKey}`
