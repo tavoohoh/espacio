@@ -1,1 +1,34 @@
-<p>image-field works!</p>
+<div class="es-form-field es-form-field-image" *ngIf="controls">
+  <label class="es-form-box">
+    <app-icon
+      *ngIf="!controls[fieldName].value"
+      iconName="Store"
+      [size]="80"
+      color="#9091a5"
+    ></app-icon>
+    <img
+      *ngIf="controls[fieldName].value"
+      class="es-form-field-image-preview"
+      [src]="controls[fieldName].value"
+      alt="Image preview"
+    />
+    <input
+      type="file"
+      accept="image/png, image/jpeg"
+      (change)="uploadImage($event)"
+    />
+
+    <span class="es-form-field-label">
+      {{ fieldLabel | translate }}
+    </span>
+    <span class="es-form-field-help">
+      {{ 'FORM.IMAGE_PLACEHOLDER' | translate }}
+    </span>
+  </label>
+
+  <div *ngIf="submitted && error" class="es-form-invalid">
+    <span>
+      {{ error | translate }}
+    </span>
+  </div>
+</div>

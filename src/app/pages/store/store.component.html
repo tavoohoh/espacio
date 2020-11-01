@@ -8,8 +8,7 @@
         fieldName="name"
         fieldLabel="FORM.NAME"
         fieldPlaceholder="FORM.NAME"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- address -->
       <app-char-field
@@ -18,8 +17,7 @@
         fieldName="address"
         fieldLabel="FORM.ADDRESS"
         fieldPlaceholder="FORM.ADDRESS"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- email -->
       <app-char-field
@@ -28,8 +26,7 @@
         fieldName="email"
         fieldLabel="FORM.EMAIL"
         fieldPlaceholder="FORM.EMAIL"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- currencySymbol -->
       <app-char-field
@@ -38,8 +35,7 @@
         fieldName="currencySymbol"
         fieldLabel="FORM.CURRENCY_SYMBOL"
         fieldPlaceholder="FORM.CURRENCY_SYMBOL"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- website -->
       <app-char-field
@@ -48,8 +44,7 @@
         fieldName="website"
         fieldLabel="FORM.WEBSITE"
         fieldPlaceholder="FORM.WEBSITE"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- category -->
       <app-char-field
@@ -58,8 +53,7 @@
         fieldName="category"
         fieldLabel="FORM.CATEGORY"
         fieldPlaceholder="FORM.CATEGORY"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- phone -->
       <app-char-field
@@ -68,8 +62,7 @@
         fieldName="phone"
         fieldLabel="FORM.PHONE"
         fieldPlaceholder="FORM.PHONE"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- whatsapp -->
       <app-char-field
@@ -78,8 +71,7 @@
         fieldName="whatsapp"
         fieldLabel="FORM.PHONE"
         fieldPlaceholder="FORM.PHONE"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- instagram -->
       <app-char-field
@@ -88,8 +80,7 @@
         fieldName="instagram"
         fieldLabel="Instagram"
         fieldPlaceholder="Instagram"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- facebook -->
       <app-char-field
@@ -98,8 +89,7 @@
         fieldName="facebook"
         fieldLabel="Facebook"
         fieldPlaceholder="Facebook"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- youtube -->
       <app-char-field
@@ -108,8 +98,7 @@
         fieldName="youtube"
         fieldLabel="YouTube"
         fieldPlaceholder="YouTube"
-      >
-      </app-char-field>
+      ></app-char-field>
 
       <!-- twitter -->
       <app-char-field
@@ -118,8 +107,24 @@
         fieldName="twitter"
         fieldLabel="Twitter"
         fieldPlaceholder="Twitter"
-      >
-      </app-char-field>
+      ></app-char-field>
+
+      <!-- description -->
+      <app-textarea-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="description"
+        fieldLabel="FORM.DESCRIPTION"
+        fieldPlaceholder="FORM.DESCRIPTION"
+      ></app-textarea-field>
+
+      <!-- image -->
+      <app-image-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="imageUrl"
+        fieldLabel="FORM.IMAGE"
+      ></app-image-field>
     </div>
   </form>
 </div>

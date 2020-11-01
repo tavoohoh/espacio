@@ -1,1 +1,20 @@
-<p>textarea-field works!</p>
+<div class="es-form-field es-form-field-textarea" [formGroup]="formGroup">
+  <label class="es-form-box">
+    <span class="es-form-field-label">
+      {{ fieldLabel | translate }}
+    </span>
+    <textarea
+      class="es-form-field-input"
+      [placeholder]="fieldPlaceholder | translate"
+      [formControlName]="fieldName"
+    ></textarea>
+  </label>
+
+  <div *ngIf="submitted && controls[fieldName].errors" class="es-form-invalid">
+    <span *ngIf="controls[fieldName].errors.required">
+      {{
+        'FORM.ERRORS.REQUIRED' | translate: { field: fieldLabel | translate }
+      }}
+    </span>
+  </div>
+</div>

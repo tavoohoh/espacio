@@ -26,7 +26,13 @@ export class ProductFormComponent extends ComponentFormBaseClass {
 
     if (productId) {
       this.getProduct(productId);
+    } else {
+      this.setForm();
     }
+  }
+
+  setFields(): { [key: string]: any } {
+    return super.setFields();
   }
 
   private getProduct(productId: string): void {}

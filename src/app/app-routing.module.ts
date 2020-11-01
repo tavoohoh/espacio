@@ -38,6 +38,10 @@ const routes: Routes = [
         component: SectionFormComponent,
       },
       {
+        path: 'sections/edit/:sectionId',
+        component: SectionFormComponent,
+      },
+      {
         path: 'orders',
         component: OrderComponent,
       },

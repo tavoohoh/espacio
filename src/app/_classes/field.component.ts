@@ -18,10 +18,10 @@ export class FieldClass implements OnChanges {
       });
     }
 
-    this.changes();
+    this.changes(changes);
   }
 
-  public changes(): void {}
+  public changes(changes: SimpleChanges): void {}
 
   get controls() {
     return this.formGroup.controls;

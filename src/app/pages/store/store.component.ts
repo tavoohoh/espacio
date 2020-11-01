@@ -8,8 +8,6 @@ import { GlobalsService } from '../../services/globals.service';
 import { StoreModel } from '../../_models';
 import { environment } from '../../../environments/environment';
 
-// TODO: add description and image field
-
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -34,11 +32,7 @@ export class StoreComponent extends ComponentFormBaseClass {
     const fields = {};
 
     for (const prop in this.store) {
-      if (
-        this.store.hasOwnProperty(prop) &&
-        prop !== 'abbreviation' &&
-        prop !== 'imageUrl'
-      ) {
+      if (this.store.hasOwnProperty(prop) && prop !== 'abbreviation') {
         let fieldConfig;
         const notRequiredFields = [
           'instagram',
