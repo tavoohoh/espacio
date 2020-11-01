@@ -10,7 +10,7 @@ export class ComponentFormBaseClass implements OnDestroy, OnInit {
   public style = StyleEnum;
   public form: FormGroup;
   public submitted = false;
-  public fieldsValues = {};
+  public fieldsValues: { [key: string]: any } = {};
 
   constructor(@Inject(FormBuilder) public formBuilder: FormBuilder) {}
 

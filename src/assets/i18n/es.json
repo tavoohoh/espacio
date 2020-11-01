@@ -62,5 +62,8 @@
     "PENDING": "Pendiente",
     "DELIVERED": "Entregado",
     "CANCELED": "Cancelado"
+  },
+  "CATEGORIES": {
+    "TITLE": "Categorías"
   }
 }

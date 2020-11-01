@@ -1,1 +1,5 @@
-<p>products works!</p>
+<app-category
+  [categories]="productCategories"
+  [activeCategory]="productActiveCategory"
+  (clicked)="filterByCategory($event)"
+></app-category>

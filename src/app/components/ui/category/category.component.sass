@@ -1,0 +1,21 @@
+@import "variables"
+@import "mixins"
+
+.es-categories-filter
+  margin: $layout-padding-sm 0 $layout-padding-sm $layout-padding-sm
+
+  .es-categories-filter-value
+    @include mixin-card($padding: $layout-padding-xs $layout-padding-sm, $margin-left: $layout-padding-sm)
+    font-size: $font-size-xs
+    text-transform: uppercase
+    color: $color-gray
+    cursor: pointer
+    transition: $effect-transition
+
+    &:hover
+      background-color: lighten($color-purple, 20)
+      color: $color-white
+
+    &.es-active
+      background-color: $color-purple
+      color: $color-white

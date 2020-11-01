@@ -22,6 +22,7 @@ import { TextareaFieldComponent } from './components/fields/textarea-field/texta
 import { ImageFieldComponent } from './components/fields/image-field/image-field.component';
 import { DropdownFieldComponent } from './components/fields/dropdown-field/dropdown-field.component';
 import { CategoryComponent } from './components/ui/category/category.component';
+import { ProductComponent } from './components/ui/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { SectionsComponent } from './pages/sections/sections.component';
 import { PaginatorComponent } from './components/ui/paginator/paginator.component';

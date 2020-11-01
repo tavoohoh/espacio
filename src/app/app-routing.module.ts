@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main.component';
 import { StoreComponent } from './pages/store/store.component';
-import { ProductComponent } from './components/ui/product/product.component';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { SectionsComponent } from './pages/sections/sections.component';
 import { SectionFormComponent } from './pages/section-form/section-form.component';
-import { OrderComponent } from './components/ui/order/order.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'products',
-        component: ProductComponent,
+        component: ProductsComponent,
       },
       {
         path: 'products/add',
@@ -43,7 +43,7 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        component: OrderComponent,
+        component: OrdersComponent,
       },
     ],
   },
