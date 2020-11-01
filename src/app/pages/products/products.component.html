@@ -1,5 +1,9 @@
-<app-category
-  [categories]="productCategories"
-  [activeCategory]="productActiveCategory"
-  (clicked)="filterByCategory($event)"
-></app-category>
+<div *ngIf="products">
+  <app-category
+    [categories]="productCategories"
+    [activeCategory]="productActiveCategory"
+    (clicked)="filterByCategory($event)"
+  ></app-category>
+
+  <app-product *ngFor="let product of products"></app-product>
+</div>

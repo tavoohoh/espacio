@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // https://github.com/ngx-translate/core
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -36,7 +37,6 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
 import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { MainComponent } from './main.component';
 import { IconComponent } from './components/ui/icon/icon.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -46,7 +46,7 @@ const COMPONENTS = [HeaderComponent, SidebarComponent];
 
 const UI_COMPONENTS = [
   CategoryComponent,
-  ProductsComponent,
+  ProductComponent,
   SectionsComponent,
   PaginatorComponent,
   OrderComponent,

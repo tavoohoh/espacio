@@ -19,7 +19,7 @@ export class CategoryComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.categories && changes.categories.currentValue) {
-      this.categories = changes.catagories.currentValue;
+      this.categories = changes.categories.currentValue;
     }
   }
 }

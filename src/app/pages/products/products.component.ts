@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 
 import { ComponentBaseClass } from '../../_classes';
-import { CategoriesModel, ProductModel } from '../../_models';
+import {
+  CategoriesModel,
+  CollectionQueryModel,
+  ProductModel,
+} from '../../_models';
+import { combineLatest, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -13,15 +18,43 @@ import { CategoriesModel, ProductModel } from '../../_models';
 export class ProductsComponent extends ComponentBaseClass {
   public productCategories: Array<string> = [];
   public productActiveCategory: string;
+  public products: Array<ProductModel> = [];
+  private categoryQuery$ = new Subject<string>();
 
   constructor(private afs: AngularFirestore) {
     super();
   }
 
   init() {
-    console.log('categories/products');
-
     this.getProductCategories();
+    this.getProducts();
+    this.resetFilters();
+  }
+
+  private resetFilters(): void {
+    this.filterByCategory(null);
+  }
+
+  private getProducts(): void {
+    const products = combineLatest([this.categoryQuery$]).pipe(
+      switchMap(([category]) =>
+        this.afs
+          .collection<ProductModel>('products', (ref) => {
+            let query: any = ref;
+
+            if (category) {
+              query = query.where('category', '==', category);
+            }
+
+            return query;
+          })
+          .valueChanges()
+      )
+    );
+
+    products
+      .pipe(takeUntil(this.$destroyed))
+      .subscribe((productsData) => (this.products = productsData));
   }
 
   private getProductCategories(): void {
@@ -32,13 +65,15 @@ export class ProductsComponent extends ComponentBaseClass {
     productCategories
       .valueChanges()
       .pipe(takeUntil(this.$destroyed))
-      .subscribe((productCategoriesData) => {
-        console.log(productCategoriesData);
-        this.productCategories = productCategoriesData.categories;
-      });
+      .subscribe(
+        (productCategoriesData) =>
+          (this.productCategories = productCategoriesData.categories)
+      );
   }
 
   public filterByCategory(value: string): void {
-    this.productActiveCategory = value;
+    this.productActiveCategory =
+      value === this.productActiveCategory ? null : value;
+    this.categoryQuery$.next(this.productActiveCategory);
   }
 }
