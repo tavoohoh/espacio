@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { GlobalsService } from './services/globals.service';
-import { BaseComponentModel } from './_models/base-component.model';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, takeUntil } from 'rxjs/operators';
-import { PageConstant } from './_constants/page.constant';
 import { StoreModel } from './_models';
+import { ComponentBaseClass } from './_classes';
+import { PageConstant } from './_constants/page.constant';
 import { environment } from '../environments/environment';
 
 @Component({
@@ -21,7 +21,7 @@ import { environment } from '../environments/environment';
   `,
   styleUrls: ['./main.component.sass'],
 })
-export class MainComponent extends BaseComponentModel implements OnInit {
+export class MainComponent extends ComponentBaseClass {
   constructor(
     private globalsService: GlobalsService,
     private router: Router,
@@ -52,7 +52,7 @@ export class MainComponent extends BaseComponentModel implements OnInit {
 
   private setStore(): void {
     const store = this.afs.doc<StoreModel>(
-      `store/${environment.app.storeApiKey}`
+      `store/${environment.appConfig.storeApiKey}`
     );
 
     store

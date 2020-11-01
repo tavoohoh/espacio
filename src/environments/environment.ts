@@ -1,9 +1,8 @@
 import { version } from '../../package.json';
+import { appConfig } from '../espacio';
 
 export const environment = {
   production: false,
   version,
-  app: {
-    storeApiKey: 'gxslOS2nhrVXPwCHcec3',
-  },
+  appConfig,
 };

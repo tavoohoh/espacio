@@ -1,21 +1,141 @@
-<div class="es-card" *ngIf="form && fieldsNames">
+<div class="es-card" *ngIf="form">
   <form class="es-form" [formGroup]="form" (ngSubmit)="submit()">
-    <ng-container *ngFor="let field of fieldsNames">
-      <label class="es-form-field">
-        <span>{{ 'FORM.' + field.text | translate }}</span>
-        <input type="text" [formControlName]="field.model" />
-      </label>
-      <div
-        *ngIf="submitted && formControls[field.model].errors"
-        class="es-form-invalid"
+    <div class="es-form-field-container">
+      <!-- name -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="name"
+        fieldLabel="FORM.NAME"
+        fieldPlaceholder="FORM.NAME"
       >
-        <span *ngIf="formControls[field.model].errors.required">
-          Email is required
-        </span>
-        <span *ngIf="formControls[field.model].errors.email">
-          Email must be a valid email address
-        </span>
-      </div>
-    </ng-container>
+      </app-char-field>
+
+      <!-- address -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="address"
+        fieldLabel="FORM.ADDRESS"
+        fieldPlaceholder="FORM.ADDRESS"
+      >
+      </app-char-field>
+
+      <!-- email -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="email"
+        fieldLabel="FORM.EMAIL"
+        fieldPlaceholder="FORM.EMAIL"
+      >
+      </app-char-field>
+
+      <!-- currencySymbol -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="currencySymbol"
+        fieldLabel="FORM.CURRENCY_SYMBOL"
+        fieldPlaceholder="FORM.CURRENCY_SYMBOL"
+      >
+      </app-char-field>
+
+      <!-- website -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="website"
+        fieldLabel="FORM.WEBSITE"
+        fieldPlaceholder="FORM.WEBSITE"
+      >
+      </app-char-field>
+
+      <!-- category -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="category"
+        fieldLabel="FORM.CATEGORY"
+        fieldPlaceholder="FORM.CATEGORY"
+      >
+      </app-char-field>
+
+      <!-- phone -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="phone"
+        fieldLabel="FORM.PHONE"
+        fieldPlaceholder="FORM.PHONE"
+      >
+      </app-char-field>
+
+      <!-- whatsapp -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="whatsapp"
+        fieldLabel="FORM.PHONE"
+        fieldPlaceholder="FORM.PHONE"
+      >
+      </app-char-field>
+
+      <!-- instagram -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="instagram"
+        fieldLabel="Instagram"
+        fieldPlaceholder="Instagram"
+      >
+      </app-char-field>
+
+      <!-- facebook -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="facebook"
+        fieldLabel="Facebook"
+        fieldPlaceholder="Facebook"
+      >
+      </app-char-field>
+
+      <!-- youtube -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="youtube"
+        fieldLabel="YouTube"
+        fieldPlaceholder="YouTube"
+      >
+      </app-char-field>
+
+      <!-- twitter -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="twitter"
+        fieldLabel="Twitter"
+        fieldPlaceholder="Twitter"
+      >
+      </app-char-field>
+    </div>
   </form>
+</div>
+
+<div class="es-form-footer" *ngIf="form">
+  <app-button
+    (clicked)="resetForm()"
+    [text]="'GENERAL.CANCEL' | translate"
+    [style]="style.simple"
+    [type]="buttonType.Simple"
+  ></app-button>
+
+  <app-button
+    (clicked)="submit()"
+    [text]="'GENERAL.SAVE' | translate"
+    [style]="style.success"
+    [type]="buttonType.Simple"
+  ></app-button>
 </div>

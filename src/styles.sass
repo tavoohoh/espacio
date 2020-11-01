@@ -17,3 +17,46 @@ body
 
 .es-card
   @include mixin-card($padding: $layout-padding-lg, $margin-left: $layout-padding-sm)
+
+// FORM
+.es-form-field-container,
+.es-form-footer
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+  gap: $layout-padding-md $layout-padding-lg
+
+.es-form-field
+  .es-form-box
+    display: block
+    padding: $layout-padding-sm $layout-padding-md
+    border-radius: $border-radius-sm
+    background-color: $color-gray-light
+
+    .es-form-field-label
+      display: block
+      color: $color-gray
+      font-weight: bold
+      font-size: $font-size-xs
+      text-transform: uppercase
+
+    .es-form-field-input
+      font-size: $font-size-sm
+      border: none
+      padding: 0
+      margin: 0
+      width: 100%
+      background-color: transparent
+
+  .es-form-invalid
+    margin: $layout-padding-xs $layout-padding-sm 0
+    font-size: $font-size-xs
+    color: $color-red
+
+.es-form-footer
+  margin: $layout-padding-md $layout-padding-lg
+
+  app-button:first-child
+    margin-right: auto
+
+  app-button:last-child
+    margin-left: auto

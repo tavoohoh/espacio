@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalsService } from '../../services/globals.service';
 import { PageModel } from '../../_models';
-import { BaseComponentModel } from '../../_models/base-component.model';
+import { ComponentBaseClass } from '../../_classes';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass'],
 })
-export class HeaderComponent extends BaseComponentModel implements OnInit {
+export class HeaderComponent extends ComponentBaseClass implements OnInit {
   public currentPage: PageModel;
 
   constructor(private globalsService: GlobalsService) {

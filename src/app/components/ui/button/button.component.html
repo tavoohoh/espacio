@@ -1,36 +1,57 @@
-<ng-container [ngSwitch]="type" (click)="clicked.emit()">
+<ng-container [ngSwitch]="type">
   <!-- Highlighted button -->
-  <a *ngSwitchCase="props.type.Highlighted"
-     class="es-button-highlighted"
-     [routerLink]="route">
+  <a
+    *ngSwitchCase="props.type.Highlighted"
+    class="es-button-highlighted"
+    (click)="clicked.emit()"
+    [routerLink]="route"
+  >
     <app-icon [iconName]="iconName" [color]="'#ffffff'"></app-icon>
     <span>
-      {{ text | translate:textArgs }}
+      {{ text | translate: textArgs }}
     </span>
   </a>
 
   <!-- Menu button -->
-  <a *ngSwitchCase="props.type.Menu"
-     class="es-button-menu"
-     routerLinkActive="es-button-active"
-     [routerLink]="route">
+  <a
+    *ngSwitchCase="props.type.Menu"
+    class="es-button-menu"
+    (click)="clicked.emit()"
+    routerLinkActive="es-button-active"
+    [routerLink]="route"
+  >
     <app-icon [iconName]="iconName" [size]="22"></app-icon>
     <span>
-      {{ text | translate:textArgs }}
+      {{ text | translate: textArgs }}
     </span>
   </a>
 
   <!-- Link button -->
-  <a *ngSwitchCase="props.type.Link"
-     class="es-button-link"
-     [routerLink]="route">
-      {{ text | translate:textArgs }}
+  <a
+    *ngSwitchCase="props.type.Link"
+    class="es-button-link"
+    (click)="clicked.emit()"
+    [routerLink]="route"
+  >
+    {{ text | translate: textArgs }}
   </a>
 
   <!-- Add button -->
-  <a *ngSwitchCase="props.type.Add"
-     class="es-button-add"
-     [routerLink]="route">
+  <a
+    *ngSwitchCase="props.type.Add"
+    class="es-button-add"
+    (click)="clicked.emit()"
+    [routerLink]="route"
+  >
     {{ text | translate }}
   </a>
+
+  <!-- Simple button -->
+  <button
+    *ngSwitchCase="props.type.Simple"
+    class="es-button-simple es-button-simple-{{ style }}"
+    (click)="clicked.emit()"
+  >
+    {{ text | translate }}
+  </button>
 </ng-container>

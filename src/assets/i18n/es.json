@@ -42,7 +42,11 @@
     "IMAGE_PLACEHOLDER": "Haz clic aquí para seleccionar una imagen",
     "PRICE": "Precio",
     "QUANTITY": "Cantidad",
-    "TITLE": "Título"
+    "TITLE": "Título",
+    "ERRORS": {
+      "REQUIRED": "{{ field }} es requerido",
+      "EMAIL_FORMAT": "El formato de correo debe ser válido"
+    }
   },
   "PAGINATOR": {
     "PAGE_OF": "Página {{ currentPage }} de {{ totalOfPages }}"

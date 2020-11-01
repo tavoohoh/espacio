@@ -1,1 +1,24 @@
-<p>char-field works!</p>
+<div class="es-form-field" [formGroup]="formGroup">
+  <label class="es-form-box">
+    <span class="es-form-field-label">
+      {{ fieldLabel | translate }}
+    </span>
+    <input
+      class="es-form-field-input"
+      type="text"
+      [placeholder]="fieldPlaceholder | translate"
+      [formControlName]="fieldName"
+    />
+  </label>
+
+  <div *ngIf="submitted && controls[fieldName].errors" class="es-form-invalid">
+    <span *ngIf="controls[fieldName].errors.required">
+      {{
+        'FORM.ERRORS.REQUIRED' | translate: { field: fieldLabel | translate }
+      }}
+    </span>
+    <span *ngIf="controls[fieldName].errors.email">
+      {{ 'FORM.ERRORS.EMAIL_FORMAT' | translate }}
+    </span>
+  </div>
+</div>

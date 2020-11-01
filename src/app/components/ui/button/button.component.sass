@@ -11,6 +11,7 @@
   background: none
   border: unset
   line-height: 1
+  cursor: pointer
 
 .es-button-highlighted,
 .es-button-menu
@@ -92,3 +93,35 @@
 
   &:hover
     @include mixin-shadow($shadow: 0 4px 4px rgba(0, 0, 0, 0.08))
+
+/*******************************
+ * Simple button
+ ******************************/
+.es-button-simple
+  color: $color-black
+  font-size: $font-size-xs
+  background-color: $color-gray-light
+  padding: $layout-padding-sm
+  text-align: center
+  border-radius: $border-radius-sm
+  width: 180px
+  line-height: 1
+
+  &.es-button-simple-primary
+    background-color: $color-purple
+
+  &.es-button-simple-success
+    background-color: $color-green
+    color: $color-white
+
+  &.es-button-simple-danger
+    background-color: $color-green
+    color: $color-white
+
+  &.es-button-simple-disabled
+    background-color: $color-gray-light
+    color: $color-black
+
+  &.es-button-simple-simple
+    background-color: $color-gray
+    color: $color-white

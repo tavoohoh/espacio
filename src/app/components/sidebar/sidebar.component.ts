@@ -4,14 +4,14 @@ import { SidebarMenuConstant } from '../../_constants/sidebar-menu.constant';
 import { StoreModel } from '../../_models';
 import { takeUntil } from 'rxjs/operators';
 import { GlobalsService } from '../../services/globals.service';
-import { BaseComponentModel } from '../../_models/base-component.model';
+import { ComponentBaseClass } from '../../_classes';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.sass'],
 })
-export class SidebarComponent extends BaseComponentModel {
+export class SidebarComponent extends ComponentBaseClass {
   public readonly appVersion = environment.version;
   public readonly menu = SidebarMenuConstant;
   public store: StoreModel;

@@ -1,10 +1,11 @@
 import { OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ButtonEmum } from '../_enums';
+import { ButtonEmum, StyleEnum } from '../_enums';
 
-export class BaseComponentModel implements OnDestroy, OnInit {
+export class ComponentBaseClass implements OnDestroy, OnInit {
   public $destroyed = new Subject();
   public buttonType = ButtonEmum;
+  public style = StyleEnum;
 
   ngOnInit(): void {
     this.init();

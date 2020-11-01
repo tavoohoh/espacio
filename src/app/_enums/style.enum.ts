@@ -1,7 +1,8 @@
 export enum StyleEnum {
-  Primary = 'Primary',
-  Success = 'Success',
-  Danger = 'Danger',
-  Disabled = 'Disabled',
-  UpperCase = 'UpperCase',
+  primary = 'primary',
+  success = 'success',
+  danger = 'danger',
+  disabled = 'disabled',
+  simple = 'simple',
+  upperCase = 'upperCase',
 }

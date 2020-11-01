@@ -1,27 +1,28 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { takeUntil } from 'rxjs/operators';
-import { BaseComponentModel } from '../../_models/base-component.model';
+
+import { ComponentBaseClass } from '../../_classes';
 import { GlobalsService } from '../../services/globals.service';
 import { StoreModel } from '../../_models';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.sass'],
 })
-export class StoreComponent extends BaseComponentModel {
+export class StoreComponent extends ComponentBaseClass {
   public form: FormGroup;
-  public submitted: boolean = true;
-  public fieldsNames: Array<{
-    model: string;
-    text: string;
-    isTextarea: boolean;
-  }> = [];
+  public submitted = false;
+  private store: StoreModel;
+  private fieldsValues = {};
 
   constructor(
     private globalsService: GlobalsService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private afs: AngularFirestore
   ) {
     super();
   }
@@ -30,36 +31,49 @@ export class StoreComponent extends BaseComponentModel {
     this.getStore();
   }
 
-  get formControls() {
-    return this.form.controls;
+  destroy() {
+    this.resetForm();
   }
 
-  private setForm(store: StoreModel): void {
+  public resetForm(): void {
+    this.form.reset(this.fieldsValues);
+    this.submitted = false;
+  }
+
+  private setForm(): void {
     const fields = {};
 
-    for (const prop in store) {
+    for (const prop in this.store) {
       if (
-        store.hasOwnProperty(prop) &&
+        this.store.hasOwnProperty(prop) &&
         prop !== 'abbreviation' &&
         prop !== 'imageUrl'
       ) {
-        let fieldConfig = [store[prop], Validators.required];
+        let fieldConfig;
+        const notRequiredFields = [
+          'instagram',
+          'facebook',
+          'youtube',
+          'twitter',
+        ];
 
         if (prop === 'email') {
-          fieldConfig = [store[prop], [Validators.required, Validators.email]];
+          fieldConfig = [
+            this.store[prop],
+            [Validators.required, Validators.email],
+          ];
+        } else if (notRequiredFields.includes(prop)) {
+          fieldConfig = [this.store[prop]];
+        } else {
+          fieldConfig = [this.store[prop], Validators.required];
         }
-
-        this.fieldsNames.push({
-          model: prop,
-          text: prop.toUpperCase(),
-          isTextarea: prop === 'description',
-        });
 
         fields[prop] = fieldConfig;
       }
     }
 
     this.form = this.formBuilder.group(fields);
+    this.fieldsValues = this.form.value;
   }
 
   private getStore(): void {
@@ -68,10 +82,24 @@ export class StoreComponent extends BaseComponentModel {
       .pipe(takeUntil(this.$destroyed))
       .subscribe((storeData) => {
         if (storeData) {
-          this.setForm(storeData);
+          this.store = storeData;
+          this.setForm();
         }
       });
   }
 
-  public submit(): void {}
+  public async submit(): Promise<void> {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.fieldsValues = this.form.value;
+
+    const store = this.afs.doc<StoreModel>(
+      `store/${environment.appConfig.storeApiKey}`
+    );
+    await store.update(this.fieldsValues);
+  }
 }
