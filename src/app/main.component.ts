@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
         <router-outlet></router-outlet>
       </div>
     </div>
+    <app-modal></app-modal>
   `,
   styleUrls: ['./main.component.sass'],
 })

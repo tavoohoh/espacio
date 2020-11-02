@@ -1,4 +1,5 @@
 @import "variables"
+@import "mixins"
 
 .es-paginator
   display: grid
@@ -7,11 +8,7 @@
   margin: $layout-padding-sm
 
   .es-paginator-control
-    transition: $effect-transition
-    background: none
-    border: unset
-    line-height: 1
-    cursor: pointer
+    @include mixin-clear-button
 
     svg
       fill: $color-black

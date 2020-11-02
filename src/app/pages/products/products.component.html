@@ -14,13 +14,6 @@
     [price]="product.price"
     [quantity]="product.quantity"
     [currencySymbol]="currencySymbol"
-    (delete)="(null)"
+    (delete)="openDeleteModal(product.id)"
   ></app-product>
-
-  <!-- TODO: add paginator and delete flow -->
-  <app-paginator
-    [currentPage]="currentPage"
-    [totalOfPages]="totalOfPages"
-    (changePage)="changePage($event)"
-  ></app-paginator>
 </div>

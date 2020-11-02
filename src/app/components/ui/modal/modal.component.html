@@ -1,1 +1,52 @@
-<p>modal works!</p>
+<ng-container *ngIf="modal">
+  <div class="es-modal">
+    <!-- title -->
+    <div class="es-modal-header">
+      <span class="es-modal-title">
+        {{ modal.title | translate }}
+      </span>
+      <button class="es-modal-close" (click)="onCancel()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          height="20"
+          width="20"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- text -->
+    <div class="es-modal-text">
+      <p *ngFor="let text of modal.content">
+        {{ text | translate }}
+      </p>
+    </div>
+
+    <div class="es-modal-actions">
+      <div class="es-modal-action">
+        <app-button
+          *ngIf="!modal.btnCancel.hidden"
+          (clicked)="onCancel()"
+          [text]="modal.btnCancel.text | translate"
+          [style]="modal.btnCancel.style"
+          [type]="buttonType.Simple"
+        ></app-button>
+      </div>
+
+      <div class="es-modal-action">
+        <app-button
+          *ngIf="!modal.btnConfirm.hidden"
+          (clicked)="onConfirm()"
+          [text]="modal.btnConfirm.text | translate"
+          [style]="modal.btnConfirm.style"
+          [type]="buttonType.Simple"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+  <div class="es-modal-background" (click)="onCancel()"></div>
+</ng-container>

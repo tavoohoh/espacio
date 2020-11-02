@@ -12,7 +12,14 @@
     "DESCRIPTION": "Float over a product to see its options",
     "ADD": "Add product",
     "EDIT": "Edit product",
-    "AVAILABLE": "Available"
+    "AVAILABLE": "Available",
+    "DELETE": {
+      "TITLE": "Delete product",
+      "CONTENT": {
+        "TEXT_1": "Do you really want to remove this product?",
+        "TEXT_2": "This action cannot be undone."
+      }
+    }
   },
   "SECTION": {
     "SINGULAR": "Section",
@@ -66,6 +73,7 @@
     "CANCELED": "Canceled"
   },
   "CATEGORIES": {
-    "TITLE": "Categories"
+    "TITLE": "Categories",
+    "FILTER": "Filter by categories"
   }
 }

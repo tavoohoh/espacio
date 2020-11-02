@@ -78,6 +78,11 @@ export class ProductFormComponent extends ComponentFormBaseClass {
   }
 
   public async submit(): Promise<void> {
+    this.form.controls.category.patchValue(
+      this.form.controls.category.value.charAt(0).toUpperCase() +
+        this.form.controls.category.value.slice(1)
+    );
+
     super.submit();
 
     if (this.form.invalid) {
@@ -91,7 +96,7 @@ export class ProductFormComponent extends ComponentFormBaseClass {
       await product.update(this.fieldsValues);
     } else {
       const product = this.afs.collection<ProductModel>('products');
-      await product.add(this.fieldsValues as ProductModel).then(() => true);
+      await product.add(this.fieldsValues as ProductModel);
     }
 
     this.resetForm();
@@ -110,21 +115,17 @@ export class ProductFormComponent extends ComponentFormBaseClass {
       .valueChanges()
       .pipe(takeUntil(this.$destroyed))
       .subscribe(async (productCategoriesData) => {
-        const category =
-          this.fieldsValues.category.charAt(0).toUpperCase() +
-          this.fieldsValues.category.slice(1);
-
         if (
           productCategoriesData &&
           productCategoriesData.categories.indexOf(
             this.fieldsValues.category
           ) === -1
         ) {
-          productCategoriesData.categories.push(category);
+          productCategoriesData.categories.push(this.fieldsValues.category);
           await productCategories.update(productCategoriesData);
         } else if (!productCategoriesData) {
           await productCategories
-            .set({ categories: [category] })
+            .set({ categories: [this.fieldsValues.categories] })
             .then(() => true);
         }
       });

@@ -12,7 +12,14 @@
     "DESCRIPTION": "Flota sobre un producto para ver sus opciones",
     "ADD": "Agregar producto",
     "EDIT": "Editar producto",
-    "AVAILABLE": "Disponible"
+    "AVAILABLE": "Disponible",
+    "DELETE": {
+      "TITLE": "Eliminar producto",
+      "CONTENT": {
+        "TEXT_1": "¿Desea eliminar este producto?",
+        "TEXT_2": "Esta acción no se puede deshacer."
+      }
+    }
   },
   "SECTION": {
     "SINGULAR": "Sección",
@@ -66,6 +73,7 @@
     "CANCELED": "Cancelado"
   },
   "CATEGORIES": {
-    "TITLE": "Categorías"
+    "TITLE": "Categorías",
+    "FILTER": "Filtrar por categorías"
   }
 }

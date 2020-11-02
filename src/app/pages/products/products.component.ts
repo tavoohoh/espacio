@@ -6,6 +6,9 @@ import { combineLatest, Subject } from 'rxjs';
 import { ComponentBaseClass } from '../../_classes';
 import { CategoriesModel, ProductModel } from '../../_models';
 import { GlobalsService } from '../../services/globals.service';
+import * as firebase from 'firebase';
+import { ModalModel } from '../../_models/modal.model';
+import { StyleEnum } from '../../_enums';
 
 @Component({
   selector: 'app-products',
@@ -19,10 +22,6 @@ export class ProductsComponent extends ComponentBaseClass {
   public currencySymbol: string;
   private categoryQuery$ = new Subject<string>();
 
-  // paginator props
-  public currentPage = 1;
-  public totalOfPages = 4;
-
   constructor(
     private afs: AngularFirestore,
     private globalsService: GlobalsService
@@ -33,11 +32,11 @@ export class ProductsComponent extends ComponentBaseClass {
   init() {
     this.getProductCategories();
     this.getProducts();
-    this.resetFilters();
+    this.startPagination();
   }
 
-  private resetFilters(): void {
-    this.filterByCategory(null);
+  private startPagination(): void {
+    this.filterByCategory(this.productActiveCategory);
   }
 
   private getStoreCurrency(): void {
@@ -49,7 +48,9 @@ export class ProductsComponent extends ComponentBaseClass {
       switchMap(([category]) =>
         this.afs
           .collection<ProductModel>('products', (ref) => {
-            let query: any = ref;
+            let query:
+              | firebase.firestore.CollectionReference
+              | firebase.firestore.Query = ref;
 
             if (category) {
               query = query.where('category', '==', category);
@@ -59,8 +60,8 @@ export class ProductsComponent extends ComponentBaseClass {
           })
           .snapshotChanges()
           .pipe(
-            map((actions) => {
-              return actions.map((product) => {
+            map((rawProducts) => {
+              return rawProducts.map((product) => {
                 const productData = product.payload.doc.data();
 
                 return new ProductModel(productData, product.payload.doc.id);
@@ -96,7 +97,42 @@ export class ProductsComponent extends ComponentBaseClass {
     this.categoryQuery$.next(this.productActiveCategory);
   }
 
-  public changePage(page: number): void {
-    this.currentPage = page;
+  /**
+   * Delete product flow
+   */
+  public openDeleteModal(productId: string): void {
+    this.globalsService.modal.value = new ModalModel({
+      title: 'PRODUCT.DELETE.TITLE',
+      content: [
+        'PRODUCT.DELETE.CONTENT.TEXT_1',
+        'PRODUCT.DELETE.CONTENT.TEXT_2',
+      ],
+      btnConfirm: {
+        text: 'GENERAL.DELETE',
+        style: StyleEnum.danger,
+      },
+      context: { productId },
+    });
+
+    const modalDestroyed$ = new Subject();
+
+    this.globalsService.modal
+      .observeModalResult()
+      .pipe(takeUntil(modalDestroyed$))
+      .subscribe((modalResultData) => {
+        if (modalResultData && modalResultData.status) {
+          if (modalResultData.status === 'confirmed') {
+            this.deleteProduct(modalResultData.context.productId);
+          }
+
+          modalDestroyed$.next(null);
+          modalDestroyed$.complete();
+        }
+      });
+  }
+
+  private async deleteProduct(productId): Promise<void> {
+    const product = this.afs.doc(`products/${productId}`);
+    await product.delete();
   }
 }

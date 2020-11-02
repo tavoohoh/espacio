@@ -1,0 +1,61 @@
+@import "variables"
+@import "mixins"
+
+.es-modal
+  z-index: 2
+  @include mixin-card()
+  position: absolute
+  bottom: 50%
+  right: 50%
+  transform: translateX(50%)
+  width: 360px
+  display: grid
+  grid-template-rows: 40px auto 40px
+
+  .es-modal-header
+    display: grid
+    gap: $layout-padding-md
+    grid-template-columns: auto min-content
+
+    .es-modal-title
+      font-weight: bold
+      font-size: $font-size-md
+      align-self: center
+
+    .es-modal-close
+      @include mixin-clear-button
+      align-self: center
+      width: 20px
+
+      svg
+        fill: $color-gray
+
+  .es-modal-text
+    margin: $layout-padding-md 0
+
+    p
+      margin: 0 0 $layout-padding-sm
+      font-size: $font-size-sm
+
+      &:last-child
+        margin: 0
+
+  .es-modal-actions
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: $layout-padding-md
+    align-self: end
+
+    app-button ::ng-deep .es-button-simple
+      width: 100%
+
+.es-modal-background
+  z-index: 1
+  position: fixed
+  height: 100vh
+  width: 100vw
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  background-color: rgba(0,0,0,0.6)

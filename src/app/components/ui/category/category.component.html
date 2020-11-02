@@ -1,6 +1,6 @@
 <div class="es-categories-filter" *ngIf="categories && categories.length > 0">
   <span class="es-categories-filter-title">
-    {{ 'CATEGORIES.TITLE' | translate }}:
+    {{ 'CATEGORIES.FILTER' | translate }}:
   </span>
 
   <span
@@ -8,7 +8,6 @@
     class="es-categories-filter-value"
     [class.es-active]="activeCategory === category"
     (click)="clicked.emit(category)"
+    >{{ category }}</span
   >
-    {{ category }}
-  </span>
 </div>

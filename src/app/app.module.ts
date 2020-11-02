@@ -31,12 +31,12 @@ import { OrderComponent } from './components/ui/order/order.component';
 import { OrderDetailComponent } from './components/ui/order-detail/order-detail.component';
 import { ModalComponent } from './components/ui/modal/modal.component';
 import { LoaderComponent } from './components/ui/loader/loader.component';
+import { IconComponent } from './components/ui/icon/icon.component';
 import { StoreComponent } from './pages/store/store.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { MainComponent } from './main.component';
-import { IconComponent } from './components/ui/icon/icon.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
