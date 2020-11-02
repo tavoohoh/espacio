@@ -9,15 +9,17 @@
   "PRODUCT": {
     "SINGULAR": "Producto",
     "PLURAL": "Productos",
-    "DESCRIPTION": "Productos/servicios/articulos de la tienda",
+    "DESCRIPTION": "Flota sobre un producto para ver sus opciones",
     "ADD": "Agregar producto",
+    "EDIT": "Editar producto",
     "AVAILABLE": "Disponible"
   },
   "SECTION": {
     "SINGULAR": "Sección",
     "PLURAL": "Secciones",
-    "DESCRIPTION": "Información adicional como entradas de blog/información/etc",
-    "ADD": "Agregar sección"
+    "DESCRIPTION": "Flota sobre una sección para ver sus opciones",
+    "ADD": "Agregar sección",
+    "EDIT": "Editar sección"
   },
   "STORE": {
     "SINGULAR": "Tienda",

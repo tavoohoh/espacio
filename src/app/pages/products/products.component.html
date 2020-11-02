@@ -5,5 +5,18 @@
     (clicked)="filterByCategory($event)"
   ></app-category>
 
-  <app-product *ngFor="let product of products"></app-product>
+  <app-product
+    *ngFor="let product of products"
+    [id]="product.id"
+    [title]="product.name"
+    [imageUrl]="product.imageUrl"
+    [category]="product.category"
+    [price]="product.price"
+    [quantity]="product.quantity"
+    [currencySymbol]="currencySymbol"
+    (delete)="(null)"
+  ></app-product>
+
+  <!-- TODO: add paginator and delete flow -->
+  TODO: Add paginator and delete flow
 </div>

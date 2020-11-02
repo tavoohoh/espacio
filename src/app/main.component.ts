@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { filter, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { GlobalsService } from './services/globals.service';
 import {
-  Event,
-  NavigationEnd,
-  ResolveEnd,
+  ActivatedRoute,
+  ActivationStart,
   Router,
   RouterEvent,
 } from '@angular/router';
@@ -31,6 +30,7 @@ export class MainComponent extends ComponentBaseClass {
   constructor(
     private globalsService: GlobalsService,
     private router: Router,
+    private route: ActivatedRoute,
     private afs: AngularFirestore
   ) {
     super();
@@ -42,19 +42,17 @@ export class MainComponent extends ComponentBaseClass {
   }
 
   private setCurrentPage(): void {
-    this.globalsService.currentPage.value = PageConstant[this.router.url];
+    this.route.firstChild.data.subscribe(
+      (data) =>
+        (this.globalsService.currentPage.value = PageConstant[data.routeName])
+    );
 
-    this.router.events
-      .pipe(
-        takeUntil(this.$destroyed),
-        filter(
-          (event: Event): event is RouterEvent => event instanceof ResolveEnd
-        )
-      )
-      .subscribe((event: ResolveEnd) => {
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof ActivationStart) {
         this.globalsService.currentPage.value =
-          event && event.url ? PageConstant[event.url] : null;
-      });
+          PageConstant[event.snapshot.data.routeName];
+      }
+    });
   }
 
   private setStore(): void {

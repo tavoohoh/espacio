@@ -26,14 +26,26 @@
     </span>
   </a>
 
+  <!-- Action button -->
+  <a
+    *ngSwitchCase="props.type.Action"
+    class="es-button-action es-button-action-{{ style }}"
+    (click)="clicked.emit()"
+    [routerLink]="route"
+  >
+    <app-icon [iconName]="iconName" [size]="16"></app-icon>
+    <span>
+      {{ text | translate: textArgs }}
+    </span>
+  </a>
+
   <!-- Link button -->
   <a
     *ngSwitchCase="props.type.Link"
     class="es-button-link"
     (click)="clicked.emit()"
     [routerLink]="route"
-  >
-    {{ text | translate: textArgs }}
+    >{{ text | translate: textArgs }}
   </a>
 
   <!-- Add button -->
@@ -42,8 +54,7 @@
     class="es-button-add"
     (click)="clicked.emit()"
     [routerLink]="route"
-  >
-    {{ text | translate }}
+    >{{ text | translate }}
   </a>
 
   <!-- Simple button -->

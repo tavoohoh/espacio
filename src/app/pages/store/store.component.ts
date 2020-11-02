@@ -74,6 +74,10 @@ export class StoreComponent extends ComponentFormBaseClass {
   public async submit(): Promise<void> {
     super.submit();
 
+    if (this.form.invalid) {
+      return;
+    }
+
     const store = this.afs.doc<StoreModel>(
       `store/${environment.appConfig.storeApiKey}`
     );

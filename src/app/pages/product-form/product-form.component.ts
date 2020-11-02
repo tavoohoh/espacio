@@ -80,6 +80,10 @@ export class ProductFormComponent extends ComponentFormBaseClass {
   public async submit(): Promise<void> {
     super.submit();
 
+    if (this.form.invalid) {
+      return;
+    }
+
     this.updateProductCategories();
 
     if (this.productId) {

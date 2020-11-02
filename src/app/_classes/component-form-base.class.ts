@@ -1,21 +1,17 @@
-import { Inject, OnDestroy, OnInit } from '@angular/core';
+import { Inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
 
-import { ButtonEmum, StyleEnum } from '../_enums';
+import { ComponentBaseClass } from './component-base.class';
 
-export class ComponentFormBaseClass implements OnDestroy, OnInit {
-  public $destroyed = new Subject();
-  public buttonType = ButtonEmum;
-  public style = StyleEnum;
+export class ComponentFormBaseClass
+  extends ComponentBaseClass
+  implements OnDestroy {
   public form: FormGroup;
   public submitted = false;
   public fieldsValues: { [key: string]: any } = {};
 
-  constructor(@Inject(FormBuilder) public formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.init();
+  constructor(@Inject(FormBuilder) public formBuilder: FormBuilder) {
+    super();
   }
 
   ngOnDestroy(): void {
@@ -41,14 +37,6 @@ export class ComponentFormBaseClass implements OnDestroy, OnInit {
 
   submit(): void {
     this.submitted = true;
-
-    if (this.form.invalid) {
-      return;
-    }
-
     this.fieldsValues = this.form.value;
   }
-
-  init(): void {}
-  destroy(): void {}
 }

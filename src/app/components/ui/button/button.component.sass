@@ -14,7 +14,8 @@
   cursor: pointer
 
 .es-button-highlighted,
-.es-button-menu
+.es-button-menu,
+.es-button-action
   display: grid
   grid-template-columns: 22px auto
 
@@ -71,6 +72,29 @@
 
     ::ng-deep app-icon svg
       fill: $color-purple
+
+/*******************************
+ * Action button
+ ******************************/
+.es-button-action
+  grid-template-columns: 16px auto
+  color: $color-purple
+  gap: $layout-padding-xs
+
+  span
+    font-size: $font-size-xs
+
+  app-icon
+    height: 16px
+
+  ::ng-deep app-icon svg
+    fill: $color-purple
+
+  &.es-button-action-danger
+    color: $color-red
+
+    ::ng-deep app-icon svg
+      fill: $color-red
 
 /*******************************
  * Link button

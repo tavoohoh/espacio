@@ -18,8 +18,89 @@ body
   color: $color-black
   background-color: $color-background
 
+// CARD
 .es-card
   @include mixin-card($padding: $layout-padding-lg, $margin-left: $layout-padding-sm)
+
+// ITEM
+.es-item
+  @include mixin-card($padding: 0)
+  position: relative
+  margin: $layout-padding-md $layout-padding-sm
+  overflow: hidden
+
+  &:hover > .es-item-actions
+    width: 180px
+
+.es-item-content
+  display: grid
+  grid-template-columns: $layout-item-image-size auto
+  grid-template-rows: max-content auto
+  gap: 0 $layout-padding-lg
+  padding: $layout-padding-sm $layout-padding-lg
+
+  .es-item-image
+    border-radius: $border-radius-sm
+    overflow: hidden
+    background-color: $color-gray-light
+    grid-column: 1
+    grid-row: 1 / 3
+    align-self: center
+    width: $layout-item-image-size
+    height: $layout-item-image-size
+    display: grid
+
+    app-icon, img
+      align-self: center
+      margin: auto
+
+    img
+      object-fit: cover
+      width: $layout-item-image-size
+      height: $layout-item-image-size
+
+  .es-item-title
+    grid-column: 2
+    grid-row: 1
+    align-self: end
+
+    .es-item-name
+      display: inline-block
+      font-size: $font-size-md
+      font-weight: bold
+      margin-right: $layout-padding-xs
+
+    .es-item-category
+      display: inline-block
+      font-size: $font-size-xs
+      text-transform: uppercase
+      color: $color-gray
+
+  .es-item-subtitle
+    grid-column: 2
+    grid-row: 2
+    font-size: $font-size-xs
+    color: $color-gray
+
+
+.es-item-actions
+  position: absolute
+  top: 0
+  right: 0
+  height: 100%
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  padding: $layout-padding-sm 0
+  gap: $layout-padding-md
+  background-color: $color-white
+  width: 0
+  transition: $effect-transition
+  overflow: hidden
+  margin-right: $layout-padding-md
+
+  app-button
+    align-self: center
+    margin: auto
 
 // FORM
 .es-form-field-container,

@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
+import { combineLatest, Subject } from 'rxjs';
 
 import { ComponentBaseClass } from '../../_classes';
-import {
-  CategoriesModel,
-  CollectionQueryModel,
-  ProductModel,
-} from '../../_models';
-import { combineLatest, Subject } from 'rxjs';
+import { CategoriesModel, ProductModel } from '../../_models';
+import { GlobalsService } from '../../services/globals.service';
 
 @Component({
   selector: 'app-products',
@@ -19,9 +16,13 @@ export class ProductsComponent extends ComponentBaseClass {
   public productCategories: Array<string> = [];
   public productActiveCategory: string;
   public products: Array<ProductModel> = [];
+  public currencySymbol: string;
   private categoryQuery$ = new Subject<string>();
 
-  constructor(private afs: AngularFirestore) {
+  constructor(
+    private afs: AngularFirestore,
+    private globalsService: GlobalsService
+  ) {
     super();
   }
 
@@ -33,6 +34,10 @@ export class ProductsComponent extends ComponentBaseClass {
 
   private resetFilters(): void {
     this.filterByCategory(null);
+  }
+
+  private getStoreCurrency(): void {
+    this.currencySymbol = this.globalsService.store.value.currencySymbol;
   }
 
   private getProducts(): void {
@@ -48,13 +53,23 @@ export class ProductsComponent extends ComponentBaseClass {
 
             return query;
           })
-          .valueChanges()
+          .snapshotChanges()
+          .pipe(
+            map((actions) => {
+              return actions.map((product) => {
+                const productData = product.payload.doc.data();
+
+                return new ProductModel(productData, product.payload.doc.id);
+              });
+            })
+          )
       )
     );
 
-    products
-      .pipe(takeUntil(this.$destroyed))
-      .subscribe((productsData) => (this.products = productsData));
+    products.pipe(takeUntil(this.$destroyed)).subscribe((productsData) => {
+      this.products = productsData;
+      this.getStoreCurrency();
+    });
   }
 
   private getProductCategories(): void {
