@@ -4,8 +4,9 @@ import { combineLatest, Subject } from 'rxjs';
 import { ComponentBaseClass } from './component-base.class';
 import { CategoriesModel, ProductModel, SectionModel } from '../_models';
 import { GlobalsService } from '../services/globals.service';
-import { StyleEnum } from '../_enums';
+import { ItemNameEnum, StyleEnum } from '../_enums';
 import { ModalModel } from '../_models/modal.model';
+import { ItemComponentConfigEnum } from '../_constants';
 import * as firebase from 'firebase';
 
 export class ItemsClass extends ComponentBaseClass {
@@ -13,17 +14,6 @@ export class ItemsClass extends ComponentBaseClass {
   public activeCategory: string;
   public items: Array<ProductModel | SectionModel> = [];
   public categoryQuery$ = new Subject<string>();
-
-  private readonly COMPONENT_CONFIG = {
-    products: {
-      name: 'products',
-      translateKey: 'PRODUCT',
-    },
-    sections: {
-      name: 'sections',
-      translateKey: 'SECTION',
-    },
-  };
 
   private componentConfig: {
     name: string;
@@ -33,7 +23,7 @@ export class ItemsClass extends ComponentBaseClass {
   constructor(
     public afs: AngularFirestore,
     public globalsService: GlobalsService,
-    private componentConfigName: 'products' | 'sections'
+    private componentConfigName: ItemNameEnum
   ) {
     super();
   }
@@ -45,7 +35,7 @@ export class ItemsClass extends ComponentBaseClass {
       return;
     }
 
-    this.componentConfig = this.COMPONENT_CONFIG[this.componentConfigName];
+    this.componentConfig = ItemComponentConfigEnum[this.componentConfigName];
 
     this.getCategories();
     this.getItems();
@@ -83,10 +73,10 @@ export class ItemsClass extends ComponentBaseClass {
                 const itemData = item.payload.doc.data();
 
                 switch (this.componentConfig.name) {
-                  case this.COMPONENT_CONFIG.products.name:
+                  case ItemComponentConfigEnum.products.name:
                     return new ProductModel(itemData, item.payload.doc.id);
 
-                  case this.COMPONENT_CONFIG.sections.name:
+                  case ItemComponentConfigEnum.sections.name:
                     return new SectionModel(itemData, item.payload.doc.id);
                 }
               });

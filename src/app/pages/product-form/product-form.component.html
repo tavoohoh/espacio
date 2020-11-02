@@ -59,7 +59,7 @@
 
 <div class="es-form-footer" *ngIf="form">
   <app-button
-    (clicked)="resetForm()"
+    (clicked)="navigateToParent()"
     [text]="'GENERAL.CANCEL' | translate"
     [style]="style.simple"
     [type]="buttonType.Simple"

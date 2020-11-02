@@ -31,7 +31,9 @@ export class ComponentFormBaseClass
   }
 
   resetForm(): void {
-    this.form.reset(this.fieldsValues);
+    if (this.form) {
+      this.form.reset(this.fieldsValues);
+    }
     this.submitted = false;
   }
 

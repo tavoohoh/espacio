@@ -36,7 +36,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'products/:productId/edit',
+        path: 'products/:itemId/edit',
         component: ProductFormComponent,
         data: {
           routeName: RouteNamesEnums.PRODUCT_EDIT,
@@ -57,7 +57,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'sections/:sectionId/edit',
+        path: 'sections/:itemId/edit',
         component: SectionFormComponent,
         data: {
           routeName: RouteNamesEnums.SECTION_EDIT,

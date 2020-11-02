@@ -43,15 +43,21 @@ export class MainComponent extends ComponentBaseClass {
   }
 
   private setCurrentPage(): void {
-    this.route.firstChild.data.subscribe(
-      (data) =>
-        (this.globalsService.currentPage.value = PageConstant[data.routeName])
-    );
+    if (this.route.firstChild) {
+      this.route.firstChild.data.subscribe(
+        (data) =>
+          (this.globalsService.currentPage.value = PageConstant[data.routeName])
+      );
+    } else {
+      this.globalsService.currentPage.value = null;
+    }
 
     this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof ActivationStart) {
-        this.globalsService.currentPage.value =
-          PageConstant[event.snapshot.data.routeName];
+        if (PageConstant[event.snapshot.data.routeName]) {
+          this.globalsService.currentPage.value =
+            PageConstant[event.snapshot.data.routeName];
+        }
       }
     });
   }

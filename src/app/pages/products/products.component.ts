@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ItemsClass } from '../../_classes';
 import { GlobalsService } from '../../services/globals.service';
+import { ItemNameEnum } from '../../_enums';
 
 @Component({
   selector: 'app-products',
@@ -16,7 +17,7 @@ export class ProductsComponent extends ItemsClass {
     public afs: AngularFirestore,
     public globalsService: GlobalsService
   ) {
-    super(afs, globalsService, 'products');
+    super(afs, globalsService, ItemNameEnum.products);
   }
 
   afterFetchItems() {
