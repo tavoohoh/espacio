@@ -19,6 +19,10 @@ export class ProductsComponent extends ComponentBaseClass {
   public currencySymbol: string;
   private categoryQuery$ = new Subject<string>();
 
+  // paginator props
+  public currentPage = 1;
+  public totalOfPages = 4;
+
   constructor(
     private afs: AngularFirestore,
     private globalsService: GlobalsService
@@ -90,5 +94,9 @@ export class ProductsComponent extends ComponentBaseClass {
     this.productActiveCategory =
       value === this.productActiveCategory ? null : value;
     this.categoryQuery$.next(this.productActiveCategory);
+  }
+
+  public changePage(page: number): void {
+    this.currentPage = page;
   }
 }

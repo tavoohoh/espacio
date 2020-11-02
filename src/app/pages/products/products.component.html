@@ -18,5 +18,9 @@
   ></app-product>
 
   <!-- TODO: add paginator and delete flow -->
-  TODO: Add paginator and delete flow
+  <app-paginator
+    [currentPage]="currentPage"
+    [totalOfPages]="totalOfPages"
+    (changePage)="changePage($event)"
+  ></app-paginator>
 </div>

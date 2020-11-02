@@ -1,0 +1,23 @@
+@import "variables"
+
+.es-paginator
+  display: grid
+  grid-template-columns: max-content auto repeat(4, 24px)
+  gap: $layout-padding-sm
+  margin: $layout-padding-sm
+
+  .es-paginator-control
+    transition: $effect-transition
+    background: none
+    border: unset
+    line-height: 1
+    cursor: pointer
+
+    svg
+      fill: $color-black
+
+    &.es-disabled
+      pointer-events: none
+
+      svg
+        fill: $color-gray
