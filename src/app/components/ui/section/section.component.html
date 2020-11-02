@@ -1,1 +1,40 @@
-<p>section works!</p>
+<div class="es-item es-item-section">
+  <div class="es-item-content">
+    <div class="es-item-image">
+      <img *ngIf="imageUrl" [src]="imageUrl" [alt]="" />
+      <app-icon
+        *ngIf="!imageUrl"
+        [size]="36"
+        iconName="Section"
+        color="#9091a5"
+      ></app-icon>
+    </div>
+
+    <div class="es-item-title">
+      <span class="es-item-name">{{ title }}</span>
+      <span class="es-item-category">{{ category }}</span>
+    </div>
+
+    <div class="es-item-subtitle">
+      {{ description }}
+    </div>
+  </div>
+
+  <div class="es-item-actions">
+    <app-button
+      route="/products/{{ id }}/edit"
+      text="GENERAL.EDIT"
+      [iconName]="iconName.Edit"
+      [type]="buttonType.Action"
+      [style]="style.primary"
+    ></app-button>
+
+    <app-button
+      (clicked)="delete.emit()"
+      text="GENERAL.DELETE"
+      [iconName]="iconName.Delete"
+      [type]="buttonType.Action"
+      [style]="style.danger"
+    ></app-button>
+  </div>
+</div>

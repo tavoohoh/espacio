@@ -1,1 +1,17 @@
-<p>sections works!</p>
+<div *ngIf="items">
+  <app-category
+    [categories]="categories"
+    [activeCategory]="activeCategory"
+    (clicked)="filterByCategory($event)"
+  ></app-category>
+
+  <app-section
+    *ngFor="let section of items"
+    [id]="section.id"
+    [title]="section.name"
+    [imageUrl]="section.imageUrl"
+    [category]="section.category"
+    [description]="section.description"
+    (delete)="openDeleteItemModal(section.id)"
+  ></app-section>
+</div>

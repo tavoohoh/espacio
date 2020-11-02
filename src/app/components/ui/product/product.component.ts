@@ -10,8 +10,4 @@ export class ProductComponent extends ItemClass {
   @Input() price: number;
   @Input() quantity: number;
   @Input() currencySymbol: string;
-
-  constructor() {
-    super();
-  }
 }

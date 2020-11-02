@@ -33,7 +33,7 @@ export const PageConstant: { [key in RouteNamesEnums]: PageModel } = {
   },
   [RouteNamesEnums.SECTIONS]: {
     title: 'SECTION.PLURAL',
-    description: 'ORDER.DESCRIPTION',
+    description: 'SECTION.DESCRIPTION',
     action: {
       text: 'SECTION.ADD',
       id: 'section-add',

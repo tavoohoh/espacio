@@ -1,12 +1,12 @@
-<div *ngIf="products">
+<div *ngIf="items">
   <app-category
-    [categories]="productCategories"
-    [activeCategory]="productActiveCategory"
+    [categories]="categories"
+    [activeCategory]="activeCategory"
     (clicked)="filterByCategory($event)"
   ></app-category>
 
   <app-product
-    *ngFor="let product of products"
+    *ngFor="let product of items"
     [id]="product.id"
     [title]="product.name"
     [imageUrl]="product.imageUrl"
@@ -14,6 +14,6 @@
     [price]="product.price"
     [quantity]="product.quantity"
     [currencySymbol]="currencySymbol"
-    (delete)="openDeleteModal(product.id)"
+    (delete)="openDeleteItemModal(product.id)"
   ></app-product>
 </div>
