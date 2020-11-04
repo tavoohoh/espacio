@@ -6,3 +6,8 @@ export { ProductModel } from './product.model';
 export { SectionModel } from './section.model';
 export { CategoriesModel } from './category.model';
 export { CollectionQueryModel } from './collection-query.model';
+export {
+  OrderCustomerModel,
+  OrderProductModel,
+  OrderModel,
+} from './order.model';

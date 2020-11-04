@@ -88,7 +88,30 @@ export class ItemsClass extends ComponentBaseClass {
     items.pipe(takeUntil(this.$destroyed)).subscribe((ItemsData) => {
       this.items = ItemsData;
       this.afterFetchItems();
+
+      if (this.activeCategory && this.items.length === 0) {
+        this.deleteCategory();
+      }
     });
+  }
+
+  private deleteCategory(): void {
+    const categories = this.afs.doc<CategoriesModel>(
+      `categories/${this.componentConfig.name}`
+    );
+
+    categories
+      .valueChanges()
+      .pipe(takeUntil(this.$destroyed))
+      .subscribe(async (categoriesData) => {
+        const newCategories = categoriesData.categories.filter(
+          (e) => e !== this.activeCategory
+        );
+
+        await categories.set({ categories: newCategories }).then(() => true);
+
+        this.startFilters();
+      });
   }
 
   private getCategories(): void {
