@@ -9,5 +9,7 @@ export { CollectionQueryModel } from './collection-query.model';
 export {
   OrderCustomerModel,
   OrderProductModel,
+  OrderProductClass,
   OrderModel,
+  OrderClass,
 } from './order.model';
