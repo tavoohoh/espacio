@@ -11,7 +11,7 @@ import {
 } from '@angular/router';
 import { StoreModel } from './_models';
 import { ComponentBaseClass } from './_classes';
-import { PageConstant } from './_constants/page.constant';
+import { PageConstant } from './_constants';
 import { environment } from '../environments/environment';
 
 @Component({

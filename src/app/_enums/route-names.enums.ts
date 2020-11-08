@@ -7,4 +7,5 @@ export enum RouteNamesEnums {
   SECTION_ADD = 'SECTION_ADD',
   SECTION_EDIT = 'SECTION_EDIT',
   ORDERS = 'ORDERS',
+  ORDER_ADD = 'ORDER_ADD',
 }

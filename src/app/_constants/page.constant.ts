@@ -5,6 +5,15 @@ export const PageConstant: { [key in RouteNamesEnums]: PageModel } = {
   [RouteNamesEnums.ORDERS]: {
     title: 'ORDER.PLURAL',
     description: 'ORDER.DESCRIPTION',
+    action: {
+      text: 'ORDER.ADD',
+      id: 'order-add',
+      route: '/orders/add',
+    },
+  },
+  [RouteNamesEnums.ORDER_ADD]: {
+    title: 'ORDER.PLURAL',
+    description: 'ORDER.ADD_DESCRIPTION',
     action: null,
   },
   [RouteNamesEnums.STORE]: {

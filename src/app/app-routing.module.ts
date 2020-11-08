@@ -7,6 +7,7 @@ import { SectionsComponent } from './pages/sections/sections.component';
 import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { OrderFormComponent } from './pages/order-form/order-form.component';
 import { RouteNamesEnums } from './_enums';
 
 const routes: Routes = [
@@ -68,6 +69,13 @@ const routes: Routes = [
         component: OrdersComponent,
         data: {
           routeName: RouteNamesEnums.ORDERS,
+        },
+      },
+      {
+        path: 'orders/add',
+        component: OrderFormComponent,
+        data: {
+          routeName: RouteNamesEnums.ORDER_ADD,
         },
       },
     ],

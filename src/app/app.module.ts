@@ -35,6 +35,7 @@ import { StoreComponent } from './pages/store/store.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { SectionsComponent } from './pages/sections/sections.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { OrderFormComponent } from './pages/order-form/order-form.component';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { MainComponent } from './main.component';
@@ -74,6 +75,7 @@ const PAGES = [
   SectionsComponent,
   SectionFormComponent,
   OrdersComponent,
+  OrderFormComponent,
 ];
 
 @NgModule({

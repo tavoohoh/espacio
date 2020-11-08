@@ -1,0 +1,22 @@
+<div class="es-order-form">
+  <div *ngIf="items">
+    <app-category
+      [categories]="categories"
+      [activeCategory]="activeCategory"
+      (clicked)="filterByCategory($event)"
+    ></app-category>
+
+    <app-product
+      *ngFor="let product of items"
+      [id]="product.id"
+      [title]="product.name"
+      [imageUrl]="product.imageUrl"
+      [category]="product.category"
+      [price]="product.price"
+      [quantity]="product.quantity"
+      [currencySymbol]="currencySymbol"
+    ></app-product>
+  </div>
+
+  <app-order-detail></app-order-detail>
+</div>
