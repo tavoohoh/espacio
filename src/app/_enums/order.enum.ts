@@ -3,3 +3,9 @@ export enum OrderStatusEnum {
   COMPLETED = 'COMPLETED',
   CANCELED = 'CANCELED',
 }
+
+export enum OrderProductActionEnum {
+  ADD = 'ADD',
+  REMOVE = 'REMOVE',
+  REMOVE_ALL = 'REMOVE_ALL',
+}

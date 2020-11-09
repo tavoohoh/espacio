@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Inject } from '@angular/core';
 
 import { takeUntil } from 'rxjs/operators';
-import { SectionModel, ProductModel, CategoriesModel } from '../_models';
+import { CategoriesModel, ProductModel, SectionModel } from '../_models';
 import { ComponentFormBaseClass } from './component-form-base.class';
 import { GlobalsService } from '../services/globals.service';
 import { ItemComponentConfigEnum } from '../_constants';
@@ -117,6 +117,11 @@ export class ItemFormClass extends ComponentFormBaseClass {
     }
 
     this.updateCategories();
+
+    if (this.componentConfigName === ItemNameEnum.products) {
+      this.fieldsValues.price = Number(this.fieldsValues.price);
+      this.fieldsValues.quantity = Number(this.fieldsValues.quantity);
+    }
 
     if (this.itemId) {
       const item = this.afs.doc<ProductModel | SectionModel>(

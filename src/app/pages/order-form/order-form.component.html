@@ -6,7 +6,7 @@
       (clicked)="filterByCategory($event)"
     ></app-category>
 
-    <app-product
+    <app-order-product
       *ngFor="let product of items"
       [id]="product.id"
       [title]="product.name"
@@ -15,7 +15,9 @@
       [price]="product.price"
       [quantity]="product.quantity"
       [currencySymbol]="currencySymbol"
-    ></app-product>
+      [isOrderDetail]="false"
+      (edit)="manageProductActions($event, product)"
+    ></app-order-product>
   </div>
 
   <app-order-detail></app-order-detail>

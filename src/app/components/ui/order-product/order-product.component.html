@@ -1,0 +1,68 @@
+<div class="es-item es-item-order-product">
+  <div class="es-item-content">
+    <div class="es-item-image">
+      <img *ngIf="imageUrl" [src]="imageUrl" [alt]="" />
+      <app-icon
+        *ngIf="!imageUrl"
+        [size]="36"
+        iconName="Product"
+        color="#9091a5"
+      ></app-icon>
+    </div>
+
+    <div class="es-item-title">
+      <span class="es-item-name">{{ title }}</span>
+      <span class="es-item-category">{{ category }}</span>
+    </div>
+
+    <div class="es-item-price">
+      {{ price | currency: currencySymbol }}
+    </div>
+  </div>
+
+  <div class="es-order-item-actions">
+    <div>
+      <button
+        (click)="updateProductSelection(orderProductAction.REMOVE)"
+        class="es-order-item-action"
+        [class.es-disabled]="selected === 0"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="es-order-item-selected">
+      {{ selected }}
+    </div>
+    <div>
+      <button
+        (click)="updateProductSelection(orderProductAction.ADD)"
+        class="es-order-item-action"
+        [class.es-disabled]="selected >= quantity"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+          />
+        </svg>
+      </button>
+    </div>
+    <span class="es-order-quantity">
+      {{ 'PRODUCT.AVAILABLE' | translate }}:
+      {{ quantity }}
+    </span>
+  </div>
+</div>

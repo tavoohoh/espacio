@@ -8,7 +8,7 @@ export class ItemClass extends ComponentBaseClass {
   @Input() category: string;
   @Input() id: string;
 
-  @Output() edit = new EventEmitter<void>();
+  @Output() edit: EventEmitter<any> = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
 
   public iconName = IconEnum;

@@ -39,6 +39,7 @@ import { OrderFormComponent } from './pages/order-form/order-form.component';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { SectionFormComponent } from './pages/section-form/section-form.component';
 import { MainComponent } from './main.component';
+import { OrderProductComponent } from './components/ui/order-product/order-product.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,6 +55,7 @@ const UI_COMPONENTS = [
   PaginatorComponent,
   OrderComponent,
   OrderDetailComponent,
+  OrderProductComponent,
   ModalComponent,
   ButtonComponent,
   LoaderComponent,

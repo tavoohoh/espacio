@@ -8,9 +8,15 @@ export class OrderCustomerModel {
 }
 
 export class OrderProductModel {
+  id: string;
   name: string;
   price: number;
   quantity: number;
+  selected?: number;
+
+  constructor() {
+    this.selected = 1;
+  }
 }
 
 export class OrderProductClass extends OrderProductModel {
@@ -63,6 +69,38 @@ export class OrderClass extends OrderModel {
       .join('');
 
     return new Date(Number(dateNow));
+  };
+
+  public readonly addProduct: (product: OrderProductModel) => void = (
+    product: OrderProductModel
+  ) => {
+    const productIndex = this.products.findIndex(
+      (prod) => prod.id === product.id
+    );
+
+    if (productIndex === -1) {
+      this.products.push(new OrderProductClass(product));
+    } else {
+      ++this.products[productIndex].selected;
+    }
+  };
+
+  public readonly removeProduct: (id: string) => void = (id: string) => {
+    const productIndex = this.products.findIndex((prod) => prod.id === id);
+
+    if (productIndex === -1) {
+      console.error('This product is not present in this order');
+    }
+
+    if (this.products[productIndex].selected > 1) {
+      --this.products[productIndex].selected;
+    } else {
+      this.removeAllOfProduct(id);
+    }
+  };
+
+  public readonly removeAllOfProduct: (id: string) => void = (id: string) => {
+    this.products = this.products.filter((prod) => prod.id !== id);
   };
 
   constructor(

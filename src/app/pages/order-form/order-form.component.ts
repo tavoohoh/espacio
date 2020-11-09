@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetItemsClass } from '../../_classes';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { GlobalsService } from '../../services/globals.service';
-import { ItemNameEnum } from '../../_enums';
+import { ItemNameEnum, OrderProductActionEnum } from '../../_enums';
+import { OrderClass, ProductModel } from '../../_models';
 
 @Component({
   selector: 'app-orders',
@@ -15,6 +16,7 @@ export class OrderFormComponent extends GetItemsClass {
   public form: FormGroup;
   public submitted = false;
   public fieldsValues: { [key: string]: any } = {};
+  public order: OrderClass;
 
   constructor(
     public afs: AngularFirestore,
@@ -26,5 +28,38 @@ export class OrderFormComponent extends GetItemsClass {
 
   afterFetchItems() {
     this.currencySymbol = this.globalsService.store.value.currencySymbol;
+  }
+
+  init() {
+    super.init();
+
+    this.order = new OrderClass({
+      customer: null,
+      products: [],
+    });
+  }
+
+  public manageProductActions(
+    action: OrderProductActionEnum,
+    product: ProductModel
+  ): void {
+    switch (action) {
+      case OrderProductActionEnum.ADD:
+        this.order.addProduct({
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+          id: product.id,
+        });
+        break;
+      case OrderProductActionEnum.REMOVE:
+        this.order.removeProduct(product.id);
+        break;
+      case OrderProductActionEnum.REMOVE_ALL:
+        this.order.removeAllOfProduct(product.id);
+        break;
+    }
+
+    console.log('order', this.order);
   }
 }
