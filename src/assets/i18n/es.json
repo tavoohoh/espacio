@@ -19,6 +19,7 @@
     "ADD": "Agregar producto",
     "EDIT": "Editar producto",
     "AVAILABLE": "Disponible",
+    "QUANTITY": "Cantidad",
     "DELETE": {
       "TITLE": "Eliminar producto",
       "CONTENT": {
@@ -56,6 +57,7 @@
     "IMAGE": "Imagen",
     "IMAGE_PLACEHOLDER": "Haz clic aquí para seleccionar un archivo",
     "PRICE": "Precio",
+    "TOTAL": "Total",
     "QUANTITY": "Cantidad",
     "TITLE": "Título",
     "ERRORS": {

@@ -38,4 +38,19 @@
   <div class="es-card-title">
     {{ 'PRODUCT.PLURAL' | translate }}
   </div>
+
+  <app-order-detail-product
+    *ngFor="let product of products"
+    [id]="product.id"
+    [title]="product.name"
+    [imageUrl]="product.imageUrl"
+    [category]="product.category"
+    [price]="product.price"
+    [quantity]="product.quantity"
+    [currencySymbol]="currencySymbol"
+    [selected]="product.selected"
+    [totalPrice]="product.getTotalPrice()"
+    [isOrderDetail]="false"
+  >
+  </app-order-detail-product>
 </div>

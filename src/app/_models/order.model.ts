@@ -21,7 +21,7 @@ export class OrderProductModel {
 
 export class OrderProductClass extends OrderProductModel {
   public readonly getTotalPrice: () => number = (): number =>
-    this.price * this.quantity;
+    this.price * this.selected;
 
   constructor(private props: OrderProductModel) {
     super();

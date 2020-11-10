@@ -1,0 +1,21 @@
+<div class="es-item es-item-order-product-detail">
+  <div class="es-item-content">
+    <div class="es-item-title">
+      {{ title }}
+    </div>
+
+    <div class="es-item-price">
+      {{ 'FORM.PRICE' | translate }}:
+      {{ price | currency: currencySymbol }}
+    </div>
+
+    <div class="es-item-selected">
+      {{ 'PRODUCT.QUANTITY' | translate }}: {{ selected }}
+    </div>
+
+    <div class="es-item-total-price">
+      {{ 'FORM.TOTAL' | translate }}:
+      {{ totalPrice | currency: currencySymbol }}
+    </div>
+  </div>
+</div>

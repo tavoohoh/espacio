@@ -50,9 +50,6 @@ export class OrderFormComponent extends GetItemsClass {
       case OrderProductActionEnum.REMOVE:
         this.order.removeProduct(product.id);
         break;
-      case OrderProductActionEnum.REMOVE_ALL:
-        this.order.removeAllOfProduct(product.id);
-        break;
     }
   }
 }

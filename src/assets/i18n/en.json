@@ -19,6 +19,7 @@
     "ADD": "Add product",
     "EDIT": "Edit product",
     "AVAILABLE": "Available",
+    "QUANTITY": "Quantity",
     "DELETE": {
       "TITLE": "Delete product",
       "CONTENT": {
@@ -56,6 +57,7 @@
     "IMAGE": "Image",
     "IMAGE_PLACEHOLDER": "Click here to select a file",
     "PRICE": "Price",
+    "TOTAL": "Total",
     "QUANTITY": "Quantity",
     "TITLE": "Title",
     "ERRORS": {

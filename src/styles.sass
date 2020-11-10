@@ -39,6 +39,8 @@ body
 
   &:hover > .es-item-actions
     width: 180px
+    padding-right: $layout-padding-md
+    padding-left: $layout-padding-md
 
 .es-item-content
   display: grid
@@ -101,10 +103,11 @@ body
   padding: $layout-padding-sm 0
   gap: $layout-padding-md
   background-color: $color-white
+  border-radius: $border-radius-md
   width: 0
   transition: $effect-transition
   overflow: hidden
-  margin-right: $layout-padding-md
+  @include mixin-shadow()
 
   app-button
     align-self: center

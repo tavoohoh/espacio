@@ -5,3 +5,4 @@ export { ItemClass } from './item.class';
 export { ItemsClass } from './items.class';
 export { GetItemsClass } from './get-items.class';
 export { ItemFormClass } from './item-form.class';
+export { OrderProductClass } from './order-product.class';

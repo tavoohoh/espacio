@@ -1,0 +1,42 @@
+@import 'variables'
+@import 'mixins'
+
+.es-item.es-item-order-product-detail
+  display: grid
+  grid-template-columns: auto
+  margin: $layout-padding-sm 0
+  padding: $layout-padding-sm
+
+  &:hover > .es-item-actions
+    width: 100px
+
+  .es-item-content
+    grid-template-columns: 2fr 1fr
+    gap: $layout-padding-sm
+    padding: 0
+
+    .es-item-title,
+    .es-item-price,
+    .es-item-selected,
+    .es-item-total-price
+      align-self: center
+      font-size: $font-size-xs
+
+    .es-item-title
+      @include mixin-overflow-ellipsis
+      grid-column: 1
+      grid-row: 1
+      font-size: $font-size-sm
+
+    .es-item-price
+      grid-column: 1
+      grid-row: 2
+
+    .es-item-selected
+      grid-column: 2
+      grid-row: 1
+      color: $color-purple
+
+    .es-item-total-price
+      grid-column: 2
+      grid-row: 2

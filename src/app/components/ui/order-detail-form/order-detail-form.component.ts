@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ComponentFormBaseClass } from '../../../_classes';
-import { OrderClass } from '../../../_models';
+import { OrderProductClass, OrderProductModel } from '../../../_models';
 import { GlobalsService } from '../../../services/globals.service';
 
 @Component({
@@ -11,7 +11,9 @@ import { GlobalsService } from '../../../services/globals.service';
   styleUrls: ['./order-detail-form.component.sass'],
 })
 export class OrderDetailFormComponent extends ComponentFormBaseClass {
-  @Input() order: OrderClass;
+  @Input() products: Array<OrderProductClass | OrderProductModel>;
+  @Input() currencySymbol: string;
+  @Output() removeProduct = new EventEmitter<string>();
 
   constructor(
     public formBuilder: FormBuilder,

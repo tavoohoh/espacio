@@ -33,6 +33,7 @@ import { LoaderComponent } from './components/ui/loader/loader.component';
 import { IconComponent } from './components/ui/icon/icon.component';
 import { OrderProductComponent } from './components/ui/order-product/order-product.component';
 import { OrderDetailFormComponent } from './components/ui/order-detail-form/order-detail-form.component';
+import { OrderDetailProductComponent } from './components/ui/order-detail-product/order-detail-product.component';
 import { StoreComponent } from './pages/store/store.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { SectionsComponent } from './pages/sections/sections.component';
@@ -57,6 +58,7 @@ const UI_COMPONENTS = [
   OrderComponent,
   OrderDetailComponent,
   OrderDetailFormComponent,
+  OrderDetailProductComponent,
   OrderProductComponent,
   ModalComponent,
   ButtonComponent,

@@ -20,5 +20,9 @@
     ></app-order-product>
   </div>
 
-  <app-order-form-detail></app-order-form-detail>
+  <app-order-form-detail
+    [products]="order.products"
+    [currencySymbol]="currencySymbol"
+  >
+  </app-order-form-detail>
 </div>
