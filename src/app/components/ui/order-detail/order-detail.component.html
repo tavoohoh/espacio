@@ -1,1 +1,63 @@
-<p>order-detail works!</p>
+<div class="es-card" *ngIf="form">
+  <div class="es-card-title es-card-title-first">
+    {{ 'CUSTOMER.SINGULAR' | translate }}
+  </div>
+
+  <form class="es-form" [formGroup]="form" (change)="submit()">
+    <div class="es-form-field-container">
+      <!-- name -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="name"
+        fieldLabel="FORM.NAME"
+        fieldPlaceholder="FORM.NAME"
+      ></app-char-field>
+
+      <!-- email -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="email"
+        fieldLabel="FORM.EMAIL"
+        fieldPlaceholder="FORM.EMAIL"
+      ></app-char-field>
+
+      <!-- phone -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="phone"
+        fieldLabel="FORM.PHONE"
+        fieldPlaceholder="FORM.PHONE"
+      ></app-char-field>
+    </div>
+  </form>
+
+  <!-- PRODUCTS -->
+  <div class="es-card-title">
+    {{ 'PRODUCT.PLURAL' | translate }}
+  </div>
+
+  <ng-container *ngIf="products && products.length > 0; else noProductTemplate">
+    <app-order-detail-product
+      *ngFor="let product of products"
+      [id]="product.id"
+      [title]="product.name"
+      [imageUrl]="product.imageUrl"
+      [category]="product.category"
+      [price]="product.price"
+      [quantity]="product.quantity"
+      [currencySymbol]="currencySymbol"
+      [selected]="product.selected"
+      [totalPrice]="product.getTotalPrice()"
+      [isOrderDetail]="false"
+    ></app-order-detail-product>
+  </ng-container>
+
+  <ng-template #noProductTemplate>
+    <div class="es-no-item-template">
+      {{ 'ORDER.NO_PRODUCTS' | translate }}
+    </div>
+  </ng-template>
+</div>

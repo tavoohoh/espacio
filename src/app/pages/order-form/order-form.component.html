@@ -20,9 +20,9 @@
     ></app-order-product>
   </div>
 
-  <app-order-form-detail
+  <app-order-detail
     [products]="order.products"
     [currencySymbol]="currencySymbol"
-  >
-  </app-order-form-detail>
+    (formValues)="updateCustomer($event)"
+  ></app-order-detail>
 </div>

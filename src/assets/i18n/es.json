@@ -5,6 +5,7 @@
     "PLURAL": "Ordenes",
     "DESCRIPTION": "Las ordenes de tus clientes",
     "CUSTOMER": "Cliente",
+    "NO_PRODUCTS": "Aún no has agregado productos",
     "ADD": "Agregar orden",
     "ADD_DESCRIPTION": "Agregar orden. Flota sobre un producto seleccionado para ver sus opciones"
   },

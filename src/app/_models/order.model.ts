@@ -23,7 +23,7 @@ export class OrderProductClass extends OrderProductModel {
   public readonly getTotalPrice: () => number = (): number =>
     this.price * this.selected;
 
-  constructor(private props: OrderProductModel) {
+  constructor(props: OrderProductModel) {
     super();
 
     for (const prop in props) {
@@ -31,8 +31,6 @@ export class OrderProductClass extends OrderProductModel {
         this[prop] = props[prop];
       }
     }
-
-    delete this.props;
   }
 }
 
@@ -103,12 +101,10 @@ export class OrderClass extends OrderModel {
     this.products = this.products.filter((prod) => prod.id !== id);
   };
 
-  constructor(
-    private props: {
-      customer: OrderCustomerModel;
-      products: Array<OrderProductModel>;
-    }
-  ) {
+  constructor(props: {
+    customer: OrderCustomerModel;
+    products: Array<OrderProductModel>;
+  }) {
     super();
 
     this.customer = props.customer;
@@ -117,7 +113,5 @@ export class OrderClass extends OrderModel {
     this.products = props.products.map(
       (product) => new OrderProductClass(product)
     );
-
-    delete this.props;
   }
 }

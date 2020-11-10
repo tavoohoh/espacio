@@ -52,4 +52,8 @@ export class OrderFormComponent extends GetItemsClass {
         break;
     }
   }
+
+  public updateCustomer(customer): void {
+    this.order.customer = customer;
+  }
 }
