@@ -4,8 +4,13 @@
     "SINGULAR": "Order",
     "PLURAL": "Orders",
     "DESCRIPTION": "Your customers orders",
+    "CUSTOMER": "Customer",
     "ADD": "Add order",
     "ADD_DESCRIPTION": "Add order. Float over a selected product to see its options"
+  },
+  "CUSTOMER": {
+    "SINGULAR": "Customer",
+    "PLURAL": "Customers"
   },
   "PRODUCT": {
     "SINGULAR": "Product",

@@ -16,9 +16,9 @@
       [quantity]="product.quantity"
       [currencySymbol]="currencySymbol"
       [isOrderDetail]="false"
-      (edit)="manageProductActions($event, product)"
+      (edit)="onProductActions($event, product)"
     ></app-order-product>
   </div>
 
-  <app-order-detail></app-order-detail>
+  <app-order-form-detail></app-order-form-detail>
 </div>

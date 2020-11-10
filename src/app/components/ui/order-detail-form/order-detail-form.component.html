@@ -1,0 +1,41 @@
+<div class="es-card" *ngIf="form">
+  <div class="es-card-title es-card-title-first">
+    {{ 'CUSTOMER.SINGULAR' | translate }}
+  </div>
+
+  <form class="es-form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="es-form-field-container">
+      <!-- name -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="name"
+        fieldLabel="FORM.NAME"
+        fieldPlaceholder="FORM.NAME"
+      ></app-char-field>
+
+      <!-- email -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="email"
+        fieldLabel="FORM.EMAIL"
+        fieldPlaceholder="FORM.EMAIL"
+      ></app-char-field>
+
+      <!-- phone -->
+      <app-char-field
+        [submitted]="submitted"
+        [formGroup]="form"
+        fieldName="phone"
+        fieldLabel="FORM.PHONE"
+        fieldPlaceholder="FORM.PHONE"
+      ></app-char-field>
+    </div>
+  </form>
+
+  <!-- PRODUCTS -->
+  <div class="es-card-title">
+    {{ 'PRODUCT.PLURAL' | translate }}
+  </div>
+</div>

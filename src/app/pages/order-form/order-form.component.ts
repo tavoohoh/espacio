@@ -1,5 +1,4 @@
-import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { GetItemsClass } from '../../_classes';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { GlobalsService } from '../../services/globals.service';
@@ -13,15 +12,11 @@ import { OrderClass, ProductModel } from '../../_models';
 })
 export class OrderFormComponent extends GetItemsClass {
   public currencySymbol: string;
-  public form: FormGroup;
-  public submitted = false;
-  public fieldsValues: { [key: string]: any } = {};
   public order: OrderClass;
 
   constructor(
     public afs: AngularFirestore,
-    public globalsService: GlobalsService,
-    @Inject(FormBuilder) public formBuilder: FormBuilder
+    public globalsService: GlobalsService
   ) {
     super(afs, globalsService, ItemNameEnum.products);
   }
@@ -39,7 +34,7 @@ export class OrderFormComponent extends GetItemsClass {
     });
   }
 
-  public manageProductActions(
+  public onProductActions(
     action: OrderProductActionEnum,
     product: ProductModel
   ): void {
@@ -59,7 +54,5 @@ export class OrderFormComponent extends GetItemsClass {
         this.order.removeAllOfProduct(product.id);
         break;
     }
-
-    console.log('order', this.order);
   }
 }

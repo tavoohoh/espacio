@@ -22,6 +22,14 @@ body
 .es-card
   @include mixin-card($padding: $layout-padding-lg, $margin-left: $layout-padding-sm)
 
+.es-card-title
+  font-size: $font-size-md
+  font-weight: bold
+  margin: $layout-padding-md 0
+
+  &.es-card-title-first
+    margin-top: 0
+
 // ITEM
 .es-item
   @include mixin-card($padding: 0)

@@ -4,8 +4,13 @@
     "SINGULAR": "Orden",
     "PLURAL": "Ordenes",
     "DESCRIPTION": "Las ordenes de tus clientes",
+    "CUSTOMER": "Cliente",
     "ADD": "Agregar orden",
     "ADD_DESCRIPTION": "Agregar orden. Flota sobre un producto seleccionado para ver sus opciones"
+  },
+  "CUSTOMER": {
+    "SINGULAR": "Cliente",
+    "PLURAL": "Clientes"
   },
   "PRODUCT": {
     "SINGULAR": "Producto",
