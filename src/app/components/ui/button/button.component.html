@@ -3,6 +3,7 @@
   <a
     *ngSwitchCase="props.type.Highlighted"
     class="es-button-highlighted"
+    [class.es-disabled]="disabled"
     (click)="clicked.emit()"
     [routerLink]="route"
   >
@@ -16,6 +17,7 @@
   <a
     *ngSwitchCase="props.type.Menu"
     class="es-button-menu"
+    [class.es-disabled]="disabled"
     (click)="clicked.emit()"
     routerLinkActive="es-button-active"
     [routerLink]="route"
@@ -30,6 +32,7 @@
   <a
     *ngSwitchCase="props.type.Action"
     class="es-button-action es-button-action-{{ style }}"
+    [class.es-disabled]="disabled"
     (click)="clicked.emit()"
     [routerLink]="route"
   >
@@ -43,6 +46,7 @@
   <a
     *ngSwitchCase="props.type.Link"
     class="es-button-link"
+    [class.es-disabled]="disabled"
     (click)="clicked.emit()"
     [routerLink]="route"
     >{{ text | translate: textArgs }}
@@ -52,6 +56,7 @@
   <a
     *ngSwitchCase="props.type.Add"
     class="es-button-add"
+    [class.es-disabled]="disabled"
     (click)="clicked.emit()"
     [routerLink]="route"
     >{{ text | translate }}
@@ -60,6 +65,7 @@
   <!-- Simple button -->
   <button
     *ngSwitchCase="props.type.Simple"
+    [class.es-disabled]="disabled"
     class="es-button-simple es-button-simple-{{ style }}"
     (click)="clicked.emit()"
   >

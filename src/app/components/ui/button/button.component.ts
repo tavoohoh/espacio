@@ -11,6 +11,7 @@ export class ButtonComponent {
   @Input() public style: StyleEnum;
   @Input() public text: string;
   @Input() public textArgs: { [key: string]: string };
+  @Input() public disabled: boolean;
 
   /**
    * Only when type is `ButtonEmum.Link` | `ButtonEmum.Highlighted` | `ButtonEmum.Action`

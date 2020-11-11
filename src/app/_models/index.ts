@@ -10,6 +10,7 @@ export {
   OrderCustomerModel,
   OrderProductModel,
   OrderProductClass,
-  OrderModel,
+  CreatedOrderModel,
+  CreateOrderProductModel,
   OrderClass,
 } from './order.model';

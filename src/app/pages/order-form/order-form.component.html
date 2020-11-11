@@ -1,5 +1,6 @@
 <div class="es-order-form">
-  <div *ngIf="items">
+  <!-- Products -->
+  <div class="es-order-products" *ngIf="items">
     <app-category
       [categories]="categories"
       [activeCategory]="activeCategory"
@@ -20,9 +21,28 @@
     ></app-order-product>
   </div>
 
+  <!-- Detail  -->
   <app-order-detail
     [products]="order.products"
     [currencySymbol]="currencySymbol"
     (formValues)="updateCustomer($event)"
   ></app-order-detail>
+
+  <!-- Footer -->
+  <div class="es-form-footer">
+    <app-button
+      (clicked)="submit()"
+      [disabled]="!isValid"
+      [text]="'GENERAL.SAVE' | translate"
+      [style]="style.success"
+      [type]="buttonType.Simple"
+    ></app-button>
+
+    <app-button
+      (clicked)="navigateToParent()"
+      [text]="'GENERAL.CANCEL' | translate"
+      [style]="style.simple"
+      [type]="buttonType.Simple"
+    ></app-button>
+  </div>
 </div>

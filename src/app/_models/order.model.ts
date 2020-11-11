@@ -12,6 +12,9 @@ export class OrderProductModel {
   name: string;
   price: number;
   quantity: number;
+  category: string;
+  description: string;
+  imageUrl: string;
   selected?: number;
 
   constructor() {
@@ -34,12 +37,12 @@ export class OrderProductClass extends OrderProductModel {
   }
 }
 
-export class OrderModel {
+export class OrderBaseModel {
   customer: OrderCustomerModel;
   products: Array<OrderProductClass | OrderProductModel>;
 }
 
-export class OrderClass extends OrderModel {
+export class OrderClass extends OrderBaseModel {
   public id: string;
   public status: OrderStatusEnum;
   public orderNumber: string;
@@ -114,4 +117,22 @@ export class OrderClass extends OrderModel {
       (product) => new OrderProductClass(product)
     );
   }
+}
+
+/**
+ * Created order and product
+ */
+export class CreateOrderProductModel {
+  name: string;
+  price: number;
+  totalPrice: number;
+  quantity: number;
+  selected: number;
+  id?: string;
+}
+
+export class CreatedOrderModel {
+  customer: OrderCustomerModel;
+  products: Array<CreateOrderProductModel>;
+  id?: string;
 }

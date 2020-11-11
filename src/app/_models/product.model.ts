@@ -5,18 +5,17 @@ export class ProductModel {
   imageUrl: string;
   price: number;
   quantity: number;
+  id?: string;
 
-  constructor(private props: any, public id?: string) {
+  constructor(props: any, id?: string) {
     for (const prop in props) {
       if (props.hasOwnProperty(prop) && prop !== 'id') {
         this[prop] = props[prop];
       }
     }
 
-    if (!this.id) {
-      delete this.id;
+    if (id) {
+      this.id = id;
     }
-
-    delete this.props;
   }
 }

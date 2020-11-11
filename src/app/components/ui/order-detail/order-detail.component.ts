@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { ComponentFormBaseClass } from '../../../_classes';
 import { OrderProductClass, OrderProductModel } from '../../../_models';
-import { GlobalsService } from '../../../services/globals.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -16,11 +14,7 @@ export class OrderDetailComponent extends ComponentFormBaseClass {
   @Output() removeProduct = new EventEmitter<string>();
   @Output() formValues = new EventEmitter<{ [key: string]: any }>();
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private globalsService: GlobalsService,
-    private afs: AngularFirestore
-  ) {
+  constructor(public formBuilder: FormBuilder) {
     super(formBuilder);
   }
 
