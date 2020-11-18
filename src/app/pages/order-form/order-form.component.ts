@@ -4,15 +4,7 @@ import { GetItemsClass } from '../../_classes';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { GlobalsService } from '../../services/globals.service';
 import { ItemNameEnum, OrderProductActionEnum } from '../../_enums';
-import {
-  OrderClass,
-  ProductModel,
-  CreateOrderProductModel,
-  OrderProductClass,
-  CreatedOrderModel,
-} from '../../_models';
-
-// TODO: Hide products with quantity equals to "0"
+import { OrderModel, ProductModel, OrderProductModel } from '../../_models';
 
 @Component({
   selector: 'app-orders',
@@ -21,7 +13,7 @@ import {
 })
 export class OrderFormComponent extends GetItemsClass {
   public currencySymbol: string;
-  public order: OrderClass;
+  public order: OrderModel;
   public isValid: boolean;
 
   constructor(
@@ -39,10 +31,7 @@ export class OrderFormComponent extends GetItemsClass {
   init() {
     super.init();
 
-    this.order = new OrderClass({
-      customer: null,
-      products: [],
-    });
+    this.order = new OrderModel();
   }
 
   public onProductActions(
@@ -101,18 +90,12 @@ export class OrderFormComponent extends GetItemsClass {
       return;
     }
 
-    const order: CreatedOrderModel = {
+    const order: OrderModel = {
       customer: this.order.customer,
-      products: this.order.products.map((item: OrderProductClass) => {
-        const product: CreateOrderProductModel = {
-          name: item.name,
-          price: item.price,
-          totalPrice: item.getTotalPrice(),
-          quantity: item.quantity,
-          selected: item.selected,
-          id: item.id,
-        };
-
+      status: this.order.status,
+      orderNumber: this.order.orderNumber,
+      date: this.order.date,
+      products: this.order.products.map((item: OrderProductModel) => {
         const productValues: ProductModel = {
           name: item.name,
           category: item.category,
@@ -127,7 +110,14 @@ export class OrderFormComponent extends GetItemsClass {
         );
         productDocument.update(productValues);
 
-        return product;
+        return {
+          name: item.name,
+          price: item.price,
+          totalPrice: item.getTotalPrice(),
+          quantity: item.quantity,
+          selected: item.selected,
+          id: item.id,
+        };
       }),
     };
 

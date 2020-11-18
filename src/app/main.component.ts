@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { GlobalsService } from './services/globals.service';
 import {
@@ -9,7 +9,7 @@ import {
   Router,
   RouterEvent,
 } from '@angular/router';
-import { StoreModel } from './_models';
+import { OrderModel, StoreModel } from './_models';
 import { ComponentBaseClass } from './_classes';
 import { PageConstant } from './_constants';
 import { environment } from '../environments/environment';
@@ -40,6 +40,7 @@ export class MainComponent extends ComponentBaseClass {
   init() {
     this.setCurrentPage();
     this.setStore();
+    this.setOrders();
   }
 
   private setCurrentPage(): void {
@@ -72,6 +73,34 @@ export class MainComponent extends ComponentBaseClass {
       .pipe(takeUntil(this.$destroyed))
       .subscribe((storeData) => {
         this.globalsService.store.value = new StoreModel(storeData);
+      });
+  }
+
+  private setOrders(): void {
+    const orders = this.afs.collection<OrderModel>(`orders`);
+
+    orders
+      .snapshotChanges()
+      .pipe(
+        takeUntil(this.$destroyed),
+        map((ordersData) => {
+          return ordersData.map((orderData) => {
+            const data = orderData.payload.doc.data();
+            const order: OrderModel = {
+              products: data.products,
+              customer: data.customer,
+              id: orderData.payload.doc.id,
+              orderNumber: data.orderNumber,
+              status: data.status,
+              date: data.date,
+            };
+
+            return order;
+          });
+        })
+      )
+      .subscribe((ordersData) => {
+        console.log('ordersData', ordersData);
       });
   }
 }

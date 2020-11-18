@@ -12,42 +12,35 @@ export class OrderProductModel {
   name: string;
   price: number;
   quantity: number;
-  category: string;
-  description: string;
-  imageUrl: string;
+  category?: string;
+  description?: string;
+  imageUrl?: string;
   selected?: number;
+  totalPrice?: string;
 
-  constructor() {
-    this.selected = 1;
-  }
-}
-
-export class OrderProductClass extends OrderProductModel {
-  public readonly getTotalPrice: () => number = (): number =>
-    this.price * this.selected;
+  public getTotalPrice?: () => string = (): string =>
+    (this.price * this.selected).toString()
 
   constructor(props: OrderProductModel) {
-    super();
-
     for (const prop in props) {
       if (props.hasOwnProperty(prop)) {
         this[prop] = props[prop];
       }
     }
+
+    this.selected = 1;
   }
 }
 
-export class OrderBaseModel {
-  customer: OrderCustomerModel;
-  products: Array<OrderProductClass | OrderProductModel>;
-}
-
-export class OrderClass extends OrderBaseModel {
-  public id: string;
+export class OrderModel {
+  public customer: OrderCustomerModel;
+  public products: Array<OrderProductModel>;
   public status: OrderStatusEnum;
   public orderNumber: string;
+  public date?: string;
+  public id?: string;
 
-  private readonly setOrderNumber: () => string = () => {
+  private setOrderNumber?: () => string = () => {
     const now = Date.now().toString();
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const char = characters.charAt(
@@ -61,18 +54,18 @@ export class OrderClass extends OrderBaseModel {
       now.slice(3, 8),
       now.slice(8, 14) + char,
     ].join('-');
-  };
+  }
 
-  public readonly getOrderDate: () => Date = () => {
+  public setOrderDate?: () => string = () => {
     const dateNow = this.orderNumber
       .slice(2, this.orderNumber.length - 1)
       .split('-')
       .join('');
 
-    return new Date(Number(dateNow));
-  };
+    return new Date(Number(dateNow)).toString();
+  }
 
-  public readonly addProduct: (product: OrderProductModel) => void = (
+  public addProduct?: (product: OrderProductModel) => void = (
     product: OrderProductModel
   ) => {
     const productIndex = this.products.findIndex(
@@ -80,13 +73,13 @@ export class OrderClass extends OrderBaseModel {
     );
 
     if (productIndex === -1) {
-      this.products.push(new OrderProductClass(product));
+      this.products.push(new OrderProductModel(product));
     } else {
       ++this.products[productIndex].selected;
     }
-  };
+  }
 
-  public readonly removeProduct: (id: string) => void = (id: string) => {
+  public removeProduct?: (id: string) => void = (id: string) => {
     const productIndex = this.products.findIndex((prod) => prod.id === id);
 
     if (productIndex === -1) {
@@ -98,41 +91,32 @@ export class OrderClass extends OrderBaseModel {
     } else {
       this.removeAllOfProduct(id);
     }
-  };
-
-  public readonly removeAllOfProduct: (id: string) => void = (id: string) => {
-    this.products = this.products.filter((prod) => prod.id !== id);
-  };
-
-  constructor(props: {
-    customer: OrderCustomerModel;
-    products: Array<OrderProductModel>;
-  }) {
-    super();
-
-    this.customer = props.customer;
-    this.orderNumber = this.setOrderNumber();
-    this.status = OrderStatusEnum.PENDING;
-    this.products = props.products.map(
-      (product) => new OrderProductClass(product)
-    );
   }
-}
 
-/**
- * Created order and product
- */
-export class CreateOrderProductModel {
-  name: string;
-  price: number;
-  totalPrice: number;
-  quantity: number;
-  selected: number;
-  id?: string;
-}
+  public removeAllOfProduct?: (id: string) => void = (id: string) => {
+    this.products = this.products.filter((prod) => prod.id !== id);
+  }
 
-export class CreatedOrderModel {
-  customer: OrderCustomerModel;
-  products: Array<CreateOrderProductModel>;
-  id?: string;
+  constructor(
+    products: Array<OrderProductModel> = [],
+    customer: OrderCustomerModel = null,
+    id: string = null,
+    orderNumber: string = null,
+    status: OrderStatusEnum = null,
+    date: string = null
+  ) {
+    this.customer = customer;
+    this.products = products.map((product) => new OrderProductModel(product));
+
+    if (id) {
+      this.orderNumber = orderNumber;
+      this.status = status;
+      this.date = date;
+      this.id = id;
+    } else {
+      this.orderNumber = this.setOrderNumber();
+      this.status = OrderStatusEnum.PENDING;
+      this.date = this.setOrderDate();
+    }
+  }
 }

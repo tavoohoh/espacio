@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ComponentFormBaseClass } from '../../../_classes';
-import { OrderProductClass, OrderProductModel } from '../../../_models';
+import { OrderProductModel } from '../../../_models';
 
 @Component({
   selector: 'app-order-detail',
@@ -9,7 +9,7 @@ import { OrderProductClass, OrderProductModel } from '../../../_models';
   styleUrls: ['./order-detail.component.sass'],
 })
 export class OrderDetailComponent extends ComponentFormBaseClass {
-  @Input() products: Array<OrderProductClass | OrderProductModel>;
+  @Input() products: Array<OrderProductModel>;
   @Input() currencySymbol: string;
   @Output() removeProduct = new EventEmitter<string>();
   @Output() formValues = new EventEmitter<{ [key: string]: any }>();
