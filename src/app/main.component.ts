@@ -13,6 +13,8 @@ import { OrderModel, StoreModel } from './_models';
 import { ComponentBaseClass } from './_classes';
 import { PageConstant } from './_constants';
 import { environment } from '../environments/environment';
+import { OrderStatusEnum } from './_enums';
+import { PendingOrdersModel } from './_models/pending-orders.model';
 
 @Component({
   template: `
@@ -77,30 +79,23 @@ export class MainComponent extends ComponentBaseClass {
   }
 
   private setOrders(): void {
-    const orders = this.afs.collection<OrderModel>(`orders`);
+    const orders = this.afs.collection<OrderModel>(`orders`, (ref) =>
+      ref.where('status', '==', OrderStatusEnum.PENDING)
+    );
 
     orders
       .snapshotChanges()
       .pipe(
         takeUntil(this.$destroyed),
         map((ordersData) => {
-          return ordersData.map((orderData) => {
-            const data = orderData.payload.doc.data();
-            const order: OrderModel = {
-              products: data.products,
-              customer: data.customer,
-              id: orderData.payload.doc.id,
-              orderNumber: data.orderNumber,
-              status: data.status,
-              date: data.date,
-            };
-
-            return order;
-          });
+          return ordersData.map(() => '');
         })
       )
-      .subscribe((ordersData) => {
-        console.log('ordersData', ordersData);
-      });
+      .subscribe(
+        (ordersData) =>
+          (this.globalsService.pendingOrders.value = new PendingOrdersModel(
+            ordersData.length
+          ))
+      );
   }
 }

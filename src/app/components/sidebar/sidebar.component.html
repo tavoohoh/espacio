@@ -12,7 +12,7 @@
     <app-button
       *ngFor="let item of menu"
       [text]="item.text"
-      [textArgs]="item.icon === 'Order' ? orderQuantity : null"
+      [textArgs]="item.icon === 'Order' ? pendingOrders : null"
       [route]="item.route"
       [type]="item.type"
       [iconName]="item.icon"
