@@ -2,6 +2,7 @@
   "ORDER": {
     "PENDING_ORDERS": "Ordenes: {{ quantity }}",
     "SINGULAR": "Orden",
+    "DETAIL": "Detalle de la orden",
     "PLURAL": "Ordenes",
     "DESCRIPTION": "Las ordenes de tus clientes",
     "CUSTOMER": "Cliente",
@@ -78,7 +79,7 @@
   },
   "STATUS": {
     "PENDING": "Pendiente",
-    "DELIVERED": "Entregado",
+    "COMPLETED": "Completado",
     "CANCELED": "Cancelado"
   },
   "CATEGORIES": {

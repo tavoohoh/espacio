@@ -114,7 +114,6 @@ export class OrderFormComponent extends GetItemsClass {
           name: item.name,
           price: item.price,
           totalPrice: item.getTotalPrice(),
-          quantity: item.quantity,
           selected: item.selected,
           id: item.id,
         };

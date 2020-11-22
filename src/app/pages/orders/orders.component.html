@@ -1,1 +1,25 @@
-<p>orders works!</p>
+<div class="es-orders" *ngIf="orders">
+  <div>
+    <app-order-item
+      *ngFor="let order of orders"
+      [customer]="order.customer"
+      [orderNumber]="order.orderNumber"
+      [productQuantity]="order.productQuantity()"
+      [status]="order.status"
+      [totalPrice]="order.totalPrice()"
+      [currencySymbol]="currencySymbol"
+      [isActive]="selectedOrder && order.id === selectedOrder.id"
+      (clicked)="selectOrder(order)"
+    ></app-order-item>
+  </div>
+
+  <app-order-item-detail
+    *ngIf="selectedOrder"
+    [customer]="selectedOrder.customer"
+    [orderNumber]="selectedOrder.orderNumber"
+    [products]="selectedOrder.products"
+    [status]="selectedOrder.status"
+    [totalPrice]="selectedOrder.totalPrice()"
+    [currencySymbol]="currencySymbol"
+  ></app-order-item-detail>
+</div>

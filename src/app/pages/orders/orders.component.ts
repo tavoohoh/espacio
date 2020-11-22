@@ -11,6 +11,10 @@ import { map, takeUntil } from 'rxjs/operators';
   styleUrls: ['./orders.component.sass'],
 })
 export class OrdersComponent extends ComponentBaseClass {
+  public currencySymbol: string;
+  public orders: Array<OrderModel> = [];
+  public selectedOrder: OrderModel;
+
   constructor(
     public afs: AngularFirestore,
     public globalsService: GlobalsService
@@ -32,21 +36,25 @@ export class OrdersComponent extends ComponentBaseClass {
         map((ordersData) => {
           return ordersData.map((orderData) => {
             const data = orderData.payload.doc.data();
-            const order: OrderModel = {
-              products: data.products,
-              customer: data.customer,
-              id: orderData.payload.doc.id,
-              orderNumber: data.orderNumber,
-              status: data.status,
-              date: data.date,
-            };
 
-            return order;
+            return new OrderModel(
+              data.products,
+              data.customer,
+              orderData.payload.doc.id,
+              data.orderNumber,
+              data.status,
+              data.date
+            );
           });
         })
       )
       .subscribe((ordersData) => {
-        console.log('ordersData', ordersData);
+        this.currencySymbol = this.globalsService.store.value.currencySymbol;
+        this.orders = ordersData;
       });
+  }
+
+  public selectOrder(order: OrderModel): void {
+    this.selectedOrder = order;
   }
 }

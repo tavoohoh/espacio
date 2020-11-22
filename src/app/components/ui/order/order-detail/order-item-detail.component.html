@@ -1,0 +1,57 @@
+<div class="es-card">
+  <div class="es-card-title es-card-title-first">
+    {{ 'ORDER.DETAIL' | translate }}
+  </div>
+
+  <div class="es-card-customer">
+    <!-- customer -->
+    <div class="es-card-field">
+      <div class="es-card-field-label">
+        {{ 'CUSTOMER.SINGULAR' | translate }}
+      </div>
+
+      <div class="es-card-field-value">
+        {{ customer.name }}
+      </div>
+    </div>
+
+    <!-- email -->
+    <div class="es-card-field">
+      <div class="es-card-field-label">
+        {{ 'FORM.EMAIL' | translate }}
+      </div>
+
+      <div class="es-card-field-value">
+        {{ customer.email }}
+      </div>
+    </div>
+
+    <!-- phone -->
+    <div class="es-card-field">
+      <div class="es-card-field-label">
+        {{ 'FORM.PHONE' | translate }}
+      </div>
+
+      <div class="es-card-field-value">
+        {{ customer.phone }}
+      </div>
+    </div>
+  </div>
+
+  <app-order-detail-product
+    *ngFor="let product of products"
+    [id]="product.id"
+    [title]="product.name"
+    [imageUrl]="product.imageUrl"
+    [category]="product.category"
+    [price]="product.price"
+    [currencySymbol]="currencySymbol"
+    [selected]="product.selected"
+    [totalPrice]="product.getTotalPrice()"
+    [isOrderDetail]="false"
+  ></app-order-detail-product>
+
+  <div class="es-card-total-price">
+    {{ 'FORM.TOTAL' | translate }} {{ totalPrice | currency: currencySymbol }}
+  </div>
+</div>

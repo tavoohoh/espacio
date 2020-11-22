@@ -1,0 +1,27 @@
+<div
+  class="es-item es-item-order"
+  [class.es-item-active]="isActive"
+  (click)="clicked.emit()"
+>
+  <div class="es-item-title">
+    {{ customer.name }}
+  </div>
+
+  <div class="es-item-status">
+    <div [class]="status">
+      {{ 'STATUS.' + status | translate }}
+    </div>
+  </div>
+
+  <div class="es-item-footer">
+    <div class="es-item-footer-content-left">
+      {{ 'PRODUCT.QUANTITY' | translate }}: {{ productQuantity }} - #{{
+        orderNumber
+      }}
+    </div>
+
+    <div class="es-item-footer-content-right">
+      {{ totalPrice | currency: currencySymbol }}
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
   </div>
 
   <!-- menu -->
-  <div class="es-sidebar-menu">
+  <div class="es-sidebar-menu" *ngIf="pendingOrders">
     <app-button
       *ngFor="let item of menu"
       [text]="item.text"

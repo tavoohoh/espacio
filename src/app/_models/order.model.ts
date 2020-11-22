@@ -11,7 +11,7 @@ export class OrderProductModel {
   id: string;
   name: string;
   price: number;
-  quantity: number;
+  quantity?: number;
   category?: string;
   description?: string;
   imageUrl?: string;
@@ -19,16 +19,16 @@ export class OrderProductModel {
   totalPrice?: string;
 
   public getTotalPrice?: () => string = (): string =>
-    (this.price * this.selected).toString()
+    (this.price * this.selected).toString();
 
   constructor(props: OrderProductModel) {
+    this.selected = 1;
+
     for (const prop in props) {
       if (props.hasOwnProperty(prop)) {
         this[prop] = props[prop];
       }
     }
-
-    this.selected = 1;
   }
 }
 
@@ -54,7 +54,7 @@ export class OrderModel {
       now.slice(3, 8),
       now.slice(8, 14) + char,
     ].join('-');
-  }
+  };
 
   public setOrderDate?: () => string = () => {
     const dateNow = this.orderNumber
@@ -63,7 +63,7 @@ export class OrderModel {
       .join('');
 
     return new Date(Number(dateNow)).toString();
-  }
+  };
 
   public addProduct?: (product: OrderProductModel) => void = (
     product: OrderProductModel
@@ -77,7 +77,7 @@ export class OrderModel {
     } else {
       ++this.products[productIndex].selected;
     }
-  }
+  };
 
   public removeProduct?: (id: string) => void = (id: string) => {
     const productIndex = this.products.findIndex((prod) => prod.id === id);
@@ -91,11 +91,29 @@ export class OrderModel {
     } else {
       this.removeAllOfProduct(id);
     }
-  }
+  };
 
   public removeAllOfProduct?: (id: string) => void = (id: string) => {
     this.products = this.products.filter((prod) => prod.id !== id);
-  }
+  };
+
+  public productQuantity?: () => number = () => {
+    let quantity = 0;
+
+    this.products.forEach((product) => (quantity += product.selected));
+
+    return quantity;
+  };
+
+  public totalPrice?: () => number = () => {
+    let price = 0;
+
+    this.products.forEach(
+      (product) => (price = price + Number(product.totalPrice))
+    );
+
+    return price;
+  };
 
   constructor(
     products: Array<OrderProductModel> = [],

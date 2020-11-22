@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { OrderProductClass } from '../../../_classes';
+import { OrderProductClass } from '../../../../_classes';
 
 @Component({
   selector: 'app-order-detail-product',
@@ -7,6 +7,6 @@ import { OrderProductClass } from '../../../_classes';
   styleUrls: ['./order-detail-product.component.sass'],
 })
 export class OrderDetailProductComponent extends OrderProductClass {
-  @Input() totalPrice: number;
+  @Input() totalPrice: string;
   @Input() selected: number;
 }

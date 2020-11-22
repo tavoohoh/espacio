@@ -1,0 +1,49 @@
+@import "variables"
+
+.es-item-order
+  display: grid
+  grid-template-columns: auto min-content
+  margin-top: 0
+  box-sizing: content-box
+  border: 2px solid $color-white
+  transition: $effect-transition
+
+  &.es-item-active
+    border: 2px solid $color-purple
+
+  .es-item-title
+    font-weight: bold
+    font-size: $font-size-md
+    padding: $layout-padding-md
+
+  .es-item-status
+    display: grid
+    padding: $layout-padding-md
+
+    .PENDING,
+    .CANCELED,
+    .COMPLETED
+      font-size: $font-size-xs
+      color: $color-gray
+      align-self: center
+
+    .COMPLETED
+      color: $color-green
+
+    .CANCELED
+      color: $color-red
+
+  .es-item-footer
+    display: grid
+    grid-template-columns: auto auto
+    border-top: 1px solid $color-gray-light
+    padding: $layout-padding-sm $layout-padding-md
+    grid-column: 1 / 3
+
+    .es-item-footer-content-left
+      font-size: $font-size-xs
+      color: $color-gray
+
+    .es-item-footer-content-right
+      font-size: $font-size-sm
+      text-align: right

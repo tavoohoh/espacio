@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ComponentFormBaseClass } from '../../../_classes';
-import { OrderProductModel } from '../../../_models';
+import { ComponentFormBaseClass } from '../../../../_classes';
+import { OrderProductModel } from '../../../../_models';
 
 @Component({
   selector: 'app-order-detail',
