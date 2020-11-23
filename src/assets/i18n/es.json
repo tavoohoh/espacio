@@ -78,13 +78,11 @@
     "EDIT": "Editar",
     "DELETE": "Eliminar"
   },
-  "STATUS": {
-    "PENDING": "Pendiente",
-    "COMPLETED": "Completado",
-    "CANCELED": "Cancelado"
-  },
   "CATEGORIES": {
     "TITLE": "Categorías",
     "FILTER": "Filtrar por categorías"
-  }
+  },
+  "PENDING": "Pendiente",
+  "COMPLETED": "Completado",
+  "CANCELED": "Cancelado"
 }

@@ -8,6 +8,6 @@
     class="es-categories-filter-value"
     [class.es-active]="activeCategory === category"
     (click)="clicked.emit(category)"
-    >{{ category }}</span
+    >{{ category | translate }}</span
   >
 </div>

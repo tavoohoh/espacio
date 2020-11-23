@@ -83,8 +83,7 @@
     "COMPLETED": "Completed",
     "CANCELED": "Canceled"
   },
-  "CATEGORIES": {
-    "TITLE": "Categories",
-    "FILTER": "Filter by categories"
-  }
+  "PENDING": "Pending",
+  "COMPLETED": "Completed",
+  "CANCELED": "Canceled"
 }
