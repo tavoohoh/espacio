@@ -8,7 +8,8 @@
     "CUSTOMER": "Cliente",
     "NO_PRODUCTS": "Aún no has agregado productos",
     "ADD": "Agregar orden",
-    "ADD_DESCRIPTION": "Agregar orden. Flota sobre un producto seleccionado para ver sus opciones"
+    "ADD_DESCRIPTION": "Agregar orden. Flota sobre un producto seleccionado para ver sus opciones",
+    "SELECT_AN_ORDER": "Haga clic o toque una orden para ver su detalle"
   },
   "CUSTOMER": {
     "SINGULAR": "Cliente",

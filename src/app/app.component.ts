@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `<router-outlet (activate)="onActivate($event)"></router-outlet>`,
 })
 export class AppComponent implements OnInit {
   constructor(private translate: TranslateService) {}
@@ -19,5 +19,16 @@ export class AppComponent implements OnInit {
 
     this.translate.setDefaultLang(userLanguage);
     this.translate.use(userLanguage);
+  }
+
+  onActivate(event) {
+    // const scrollToTop = window.setInterval(() => {
+    //   const pos = window.pageYOffset;
+    //   if (pos > 0) {
+    //     window.scrollTo(0, pos - 20);
+    //   } else {
+    //     window.clearInterval(scrollToTop);
+    //   }
+    // }, 16);
   }
 }

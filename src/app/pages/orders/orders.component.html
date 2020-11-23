@@ -1,5 +1,11 @@
 <div class="es-orders" *ngIf="orders">
   <div>
+    <app-category
+      [categories]="categories"
+      [activeCategory]="activeCategory"
+      (clicked)="filterByCategory($event)"
+    ></app-category>
+
     <app-order-item
       *ngFor="let order of orders"
       [customer]="order.customer"
@@ -14,7 +20,7 @@
   </div>
 
   <app-order-item-detail
-    *ngIf="selectedOrder"
+    *ngIf="selectedOrder; else noSelectedOrderTemplate"
     [customer]="selectedOrder.customer"
     [orderNumber]="selectedOrder.orderNumber"
     [products]="selectedOrder.products"
@@ -24,3 +30,11 @@
     [orderId]="selectedOrder.id"
   ></app-order-item-detail>
 </div>
+
+<ng-template #noSelectedOrderTemplate>
+  <div class="es-no-content-template">
+    <span>
+      {{ 'ORDER.SELECT_AN_ORDER' | translate }}
+    </span>
+  </div>
+</ng-template>

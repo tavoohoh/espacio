@@ -8,7 +8,8 @@
     "CUSTOMER": "Customer",
     "NO_PRODUCTS": "You have not added products yet",
     "ADD": "Add order",
-    "ADD_DESCRIPTION": "Add order. Float over a selected product to see its options"
+    "ADD_DESCRIPTION": "Add order. Float over a selected product to see its options",
+    "SELECT_AN_ORDER": "Click or touch an order to see its detail"
   },
   "CUSTOMER": {
     "SINGULAR": "Customer",
