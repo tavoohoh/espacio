@@ -1,8 +1,9 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { OrderStatusEnum } from '../_enums';
 import { OrderCustomerModel } from '../_models';
+import { ComponentBaseClass } from './component-base.class';
 
-export class OrderItemClass {
+export class OrderItemClass extends ComponentBaseClass {
   @Input() customer: OrderCustomerModel;
   @Input() productQuantity: number;
   @Input() orderNumber: string;

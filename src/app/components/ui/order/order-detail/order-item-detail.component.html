@@ -1,57 +1,79 @@
-<div class="es-card">
-  <div class="es-card-title es-card-title-first">
+<div class="es-item es-item-order-detail">
+  <div class="es-item-title">
     {{ 'ORDER.DETAIL' | translate }}
   </div>
 
-  <div class="es-card-customer">
+  <div class="es-item-customer">
     <!-- customer -->
-    <div class="es-card-field">
-      <div class="es-card-field-label">
+    <div class="es-item-field">
+      <div class="es-item-field-label">
         {{ 'CUSTOMER.SINGULAR' | translate }}
       </div>
 
-      <div class="es-card-field-value">
+      <div class="es-item-field-value">
         {{ customer.name }}
       </div>
     </div>
 
     <!-- email -->
-    <div class="es-card-field">
-      <div class="es-card-field-label">
+    <div class="es-item-field">
+      <div class="es-item-field-label">
         {{ 'FORM.EMAIL' | translate }}
       </div>
 
-      <div class="es-card-field-value">
+      <div class="es-item-field-value">
         {{ customer.email }}
       </div>
     </div>
 
     <!-- phone -->
-    <div class="es-card-field">
-      <div class="es-card-field-label">
+    <div class="es-item-field">
+      <div class="es-item-field-label">
         {{ 'FORM.PHONE' | translate }}
       </div>
 
-      <div class="es-card-field-value">
+      <div class="es-item-field-value">
         {{ customer.phone }}
       </div>
     </div>
   </div>
 
-  <app-order-detail-product
-    *ngFor="let product of products"
-    [id]="product.id"
-    [title]="product.name"
-    [imageUrl]="product.imageUrl"
-    [category]="product.category"
-    [price]="product.price"
-    [currencySymbol]="currencySymbol"
-    [selected]="product.selected"
-    [totalPrice]="product.getTotalPrice()"
-    [isOrderDetail]="false"
-  ></app-order-detail-product>
+  <div class="es-item-products">
+    <app-order-detail-product
+      *ngFor="let product of products"
+      [id]="product.id"
+      [title]="product.name"
+      [imageUrl]="product.imageUrl"
+      [category]="product.category"
+      [price]="product.price"
+      [currencySymbol]="currencySymbol"
+      [selected]="product.selected"
+      [totalPrice]="product.getTotalPrice()"
+      [isOrderDetail]="false"
+    ></app-order-detail-product>
+  </div>
 
-  <div class="es-card-total-price">
-    {{ 'FORM.TOTAL' | translate }} {{ totalPrice | currency: currencySymbol }}
+  <div class="es-item-total-price">
+    <span>{{ 'FORM.TOTAL' | translate }}</span>
+    <span>{{ totalPrice | currency: currencySymbol }}</span>
+  </div>
+
+  <div class="es-item-footer">
+    <app-button
+      [iconName]="iconName.Cancel"
+      [type]="buttonType.Action"
+      [style]="style.danger"
+      [text]="'STATUS.CANCELED'"
+      (clicked)="changeOrderStatus()"
+    ></app-button>
+
+    <span></span>
+
+    <app-button
+      [iconName]="iconName.Check"
+      [type]="buttonType.Action"
+      [text]="'STATUS.COMPLETED'"
+      (clicked)="changeOrderStatus()"
+    ></app-button>
   </div>
 </div>

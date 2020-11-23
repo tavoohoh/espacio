@@ -1,8 +1,38 @@
 @import 'src/sass/variables'
 
-.es-card
+.es-item-order-detail
   margin: 0
 
-.es-form-field-container
-  grid-template-columns: auto
-  gap: $layout-padding-sm
+  .es-item-title
+    font-weight: bold
+    font-size: $font-size-md
+    padding: $layout-padding-md
+
+  .es-item-customer
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+    gap: $layout-padding-xs
+    background-color: $color-gray-light
+    padding: $layout-padding-md
+
+  .es-item-products
+    padding: $layout-padding-sm $layout-padding-md $layout-padding-md
+
+  .es-item-total-price
+    display: grid
+    grid-template-columns: auto min-content
+    gap: $layout-padding-md
+    padding: $layout-padding-md
+
+    span:first-child
+      color: $color-gray
+      font-weight: bold
+      text-transform: uppercase
+      text-align: right
+
+  .es-item-footer
+    display: grid
+    grid-template-columns: min-content auto min-content
+    gap: $layout-padding-xs
+    padding: $layout-padding-md
+    border-top: 2px solid $color-gray-light
