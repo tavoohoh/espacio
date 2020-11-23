@@ -58,13 +58,13 @@
     <span>{{ totalPrice | currency: currencySymbol }}</span>
   </div>
 
-  <div class="es-item-footer">
+  <div class="es-item-footer" *ngIf="status === statusEnum.PENDING">
     <app-button
       [iconName]="iconName.Cancel"
       [type]="buttonType.Action"
       [style]="style.danger"
       [text]="'STATUS.CANCELED'"
-      (clicked)="changeOrderStatus()"
+      (clicked)="changeOrderStatus(statusEnum.CANCELED)"
     ></app-button>
 
     <span></span>
@@ -72,8 +72,9 @@
     <app-button
       [iconName]="iconName.Check"
       [type]="buttonType.Action"
+      [style]="style.success"
       [text]="'STATUS.COMPLETED'"
-      (clicked)="changeOrderStatus()"
+      (clicked)="changeOrderStatus(statusEnum.COMPLETED)"
     ></app-button>
   </div>
 </div>

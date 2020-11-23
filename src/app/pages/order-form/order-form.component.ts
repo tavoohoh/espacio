@@ -96,19 +96,12 @@ export class OrderFormComponent extends GetItemsClass {
       orderNumber: this.order.orderNumber,
       date: this.order.date,
       products: this.order.products.map((item: OrderProductModel) => {
-        const productValues: ProductModel = {
-          name: item.name,
-          category: item.category,
-          description: item.description,
-          imageUrl: item.imageUrl,
-          price: item.price,
-          quantity: item.quantity - item.selected,
-        };
-
         const productDocument = this.afs.doc<ProductModel>(
           `${ItemNameEnum.products}/${item.id}`
         );
-        productDocument.update(productValues);
+        productDocument.update({
+          quantity: item.quantity - item.selected,
+        });
 
         return {
           name: item.name,

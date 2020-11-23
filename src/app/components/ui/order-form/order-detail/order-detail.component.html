@@ -53,6 +53,11 @@
       [totalPrice]="product.getTotalPrice()"
       [isOrderDetail]="false"
     ></app-order-detail-product>
+
+    <div class="es-item-total-price">
+      <span>{{ 'FORM.TOTAL' | translate }}</span>
+      <span>{{ totalPrice() | currency: currencySymbol }}</span>
+    </div>
   </ng-container>
 
   <ng-template #noProductTemplate>
@@ -60,6 +65,4 @@
       {{ 'ORDER.NO_PRODUCTS' | translate }}
     </div>
   </ng-template>
-
-  // TODO: add total price
 </div>

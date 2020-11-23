@@ -12,20 +12,8 @@ export class NumericFieldComponent extends FieldClass {
   }
 
   public numberOnly(event): boolean {
-    const validCodes = [
-      'Digit0',
-      'Digit1',
-      'Digit2',
-      'Digit3',
-      'Digit4',
-      'Digit5',
-      'Digit6',
-      'Digit7',
-      'Digit8',
-      'Digit9',
-      'Period',
-    ];
+    const validCodes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 
-    return !!validCodes.some((code) => code.includes(event.code));
+    return !!validCodes.some((code) => code.includes(event.key));
   }
 }

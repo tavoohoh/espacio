@@ -35,4 +35,14 @@ export class OrderDetailComponent extends ComponentFormBaseClass {
 
     this.formValues.emit(this.form.value);
   }
+
+  public totalPrice() {
+    let price = 0;
+
+    this.products.forEach(
+      (product) => (price = price + Number(product.getTotalPrice()))
+    );
+
+    return price;
+  }
 }
